@@ -1,4 +1,4 @@
-const MASTER_PIN = "786";
+const MASTER_PIN = "392";
 
 const modules = {
     social: `<h2>Social & Dating</h2><p>Live Video & Voice Chat Active.</p>`,
