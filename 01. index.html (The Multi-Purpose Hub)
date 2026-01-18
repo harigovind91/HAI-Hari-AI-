@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAI | Hari AI Universal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap');
+        body { font-family: 'Orbitron', sans-serif; background: #000; color: #fff; }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(0, 255, 204, 0.1); }
+    </style>
+</head>
+<body class="pb-24">
+    <nav class="fixed top-0 w-full z-50 p-4 glass flex justify-between items-center">
+        <span class="text-cyan-400 font-black italic">HAI HARI AI</span>
+        <button onclick="accessAdmin()"><i class="fas fa-fingerprint text-xl text-cyan-500"></i></button>
+    </nav>
+
+    <main id="app-view" class="pt-20 px-4 max-w-6xl mx-auto"></main>
+
+    <nav class="fixed bottom-0 w-full glass grid grid-cols-4 p-4 z-50">
+        <button onclick="show('social')" class="text-[8px] font-bold uppercase"><i class="fas fa-heart block text-lg text-pink-500"></i>Social</button>
+        <button onclick="show('market')" class="text-[8px] font-bold uppercase"><i class="fas fa-shopping-cart block text-lg text-yellow-500"></i>Market</button>
+        <button onclick="show('tools')" class="text-[8px] font-bold uppercase"><i class="fas fa-tools block text-lg text-blue-500"></i>Tools</button>
+        <button onclick="show('jobs')" class="text-[8px] font-bold uppercase"><i class="fas fa-briefcase block text-lg text-green-500"></i>Jobs</button>
+    </nav>
+
+    <script src="master-core.js"></script>
+</body>
+</html>
