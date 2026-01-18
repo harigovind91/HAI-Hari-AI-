@@ -17,32 +17,45 @@
         <span class="text-cyan-400 font-black italic">HAI HARI AI</span>
         <button onclick="accessAdmin()"><i class="fas fa-fingerprint text-xl text-cyan-500"></i></button>
     </nav>
+          <main id="app-view" class="pt-20 px-4 max-w-6xl mx-auto">
+        <div id="job-tracker" style="background: rgba(0,20,40,0.9); border: 2px solid #00f3ff; padding: 20px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 0 25px rgba(0,243,255,0.3); text-align: center;">
+            <h3 style="color: #00f3ff; font-family: 'Orbitron'; margin-bottom: 15px;">🌍 GLOBAL RECRUITMENT PULSE</h3>
+            
+            <div id="vmap" style="width: 100%; height: 150px; background: url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg') no-repeat center; background-size: contain; margin-bottom: 15px; filter: hue-rotate(180deg); opacity: 0.8;"></div>
 
-    <main id="app-view" class="pt-20 px-4 max-w-6xl mx-auto"></main>
+            <div id="live-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; color: white; font-family: 'Orbitron'; font-size: 11px;">
+                <div style="border: 1px solid #333; padding: 5px;">🇮🇳 IND: <span style="color: #00ff88;">ONLINE</span></div>
+                <div style="border: 1px solid #333; padding: 5px;">🇺🇸 USA: <span style="color: #00ff88;">SYNCING</span></div>
+                <div style="border: 1px solid #333; padding: 5px;">🇦🇪 UAE: <span style="color: #00ff88;">ACTIVE</span></div>
+                <div style="border: 1px solid #333; padding: 5px;">🤖 HAI: <span style="color: #00ff88;">MASTER</span></div>
+            </div>
+            <p style="font-size: 10px; color: #00f3ff; margin-top: 15px; letter-spacing: 3px;">SYSTEM SECURED: KEY 786 REQUIRED</p>
+        </div>
+    </main>
 
     <nav class="fixed bottom-0 w-full glass grid grid-cols-4 p-4 z-50">
-        <button onclick="show('social')" class="text-[8px] font-bold uppercase"><i class="fas fa-heart block text-lg text-pink-500"></i>Social</button>
-        <button onclick="show('market')" class="text-[8px] font-bold uppercase"><i class="fas fa-shopping-cart block text-lg text-yellow-500"></i>Market</button>
-        <button onclick="show('tools')" class="text-[8px] font-bold uppercase"><i class="fas fa-tools block text-lg text-blue-500"></i>Tools</button>
-        <button onclick="show('jobs')" class="text-[8px] font-bold uppercase"><i class="fas fa-briefcase block text-lg text-green-500"></i>Jobs</button>
+        <button class="text-[8px] font-bold uppercase"><i class="fas fa-heart block text-lg"></i>social</button>
+        <button class="text-[8px] font-bold uppercase"><i class="fas fa-shopping-cart block text-lg"></i>market</button>
+        <button class="text-[8px] font-bold uppercase"><i class="fas fa-tools block text-lg"></i>tools</button>
+        <button class="text-[8px] font-bold uppercase"><i class="fas fa-briefcase block text-lg"></i>jobs</button>
     </nav>
 
-    <script src="master-core.js"></script>
+    <script>
+        function accessAdmin() {
+            const pin = prompt("ENTER MASTER SECURITY KEY:");
+            if (pin === "392") {
+                new Audio('https://www.soundjay.com/buttons/sounds/button-37a.mp3').play();
+                alert("🔓 ACCESS GRANTED: WELCOME HARI GOVIND JI");
+                document.body.style.border = "5px solid #00ff88";
+            } else {
+                alert("❌ ACCESS DENIED");
+                document.body.style.border = "5px solid #ff0000";
+            }
+        }
+        // फिंगरप्रिंट बटन को जोड़ना
+        document.querySelector('.fa-fingerprint').parentElement.onclick = accessAdmin;
+    </script>
 </body>
 </html>
-<div id="job-tracker" style="background: rgba(0, 20, 40, 0.8); border-left: 4px solid #00f3ff; padding: 15px; margin-top: 10px; border-radius: 5px;">
-    <h4 style="color: #00f3ff; font-family: 'Orbitron'; margin: 0;">GLOBAL RECRUITMENT PULSE</h4>
-    <div id="live-stats" style="color: white; font-family: sans-serif; font-size: 14px; margin-top: 10px;">
-        <p>📍 USA: <span style="color: #00ff88;">Processing...</span></p>
-        <p>📍 INDIA: <span style="color: #00ff88;">Active Nodes...</span></p>
-        <p>📍 UAE: <span style="color: #00ff88;">Matching Jobs...</span></p>
-    </div>
-    <div style="font-size: 10px; color: #aaa;">Data secured by HAI Master Key 🔒</div>
-</div>
-<main <div style="background: rgba(0,20,40,0.9); border: 2px solid #00f3ff; margin: 15px; border-radius: 15px; padding: 15px; text-align: center;">
-    <h3 style="color: #00f3ff; font-family: 'Orbitron';">GLOBAL LIVE NODES</h3>
-    <div id="vmap" style="width: 100%; height: 200px; background: url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg') no-repeat center; background-size: contain; opacity: 0.6;"></div>
-    <div style="border-top: 1px solid #00f3ff; margin-top: 10px; padding-top: 10px;">
-        <p style="color: #00ff88; font-family: sans-serif;">📍 Active Recruits: <span id="job-count">Calculating...</span></p>
-    </div>
-</div>
+
+    
