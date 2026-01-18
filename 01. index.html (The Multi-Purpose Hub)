@@ -30,3 +30,12 @@
     <script src="master-core.js"></script>
 </body>
 </html>
+<div id="job-tracker" style="background: rgba(0, 20, 40, 0.8); border-left: 4px solid #00f3ff; padding: 15px; margin-top: 10px; border-radius: 5px;">
+    <h4 style="color: #00f3ff; font-family: 'Orbitron'; margin: 0;">GLOBAL RECRUITMENT PULSE</h4>
+    <div id="live-stats" style="color: white; font-family: sans-serif; font-size: 14px; margin-top: 10px;">
+        <p>📍 USA: <span style="color: #00ff88;">Processing...</span></p>
+        <p>📍 INDIA: <span style="color: #00ff88;">Active Nodes...</span></p>
+        <p>📍 UAE: <span style="color: #00ff88;">Matching Jobs...</span></p>
+    </div>
+    <div style="font-size: 10px; color: #aaa;">Data secured by HAI Master Key 🔒</div>
+</div>
