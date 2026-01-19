@@ -1,13 +1,1 @@
-# 🏛️ HAI Millennium Sovereign OS [PRIVATE]
-**Owner:** Harigovind Singh Chauhan  
-**Org:** Avikary Cosy Science Private Limited  
-
-## 🛡️ Security Protocol
-- **Visibility:** STRICTLY PRIVATE.
-- **Master Key:** 292 (Admin) / 239 (Recovery).
-- **Automation:** Fully autonomous neural sync enabled.
-- **SSL:** Enforced HTTPS RSA-4096.
-
-## ⚠️ Legal Notice
-Unauthorized access or code duplication is an act of cyber-warfare against Avikary Cosy Science IP. This system is protected by AI-hardened encryption.
 
