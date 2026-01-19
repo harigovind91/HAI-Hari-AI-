@@ -1,0 +1,36 @@
+<div class="hologram-panel p-8 mt-10 border-t-2 border-cyan-500/20 bg-blue-900/5 relative overflow-hidden">
+    <div class="flex justify-between items-center mb-6">
+        <div>
+            <h3 class="neon-glow text-sm tracking-[4px] uppercase italic">Global Live Nodes</h3>
+            <p class="text-[7px] text-gray-500 tracking-[2px]">REAL-TIME SATELLITE TELEMETRY</p>
+        </div>
+        <div class="text-right">
+            <span class="text-green-500 text-[8px] font-black animate-pulse">● LIVE SYNC</span>
+        </div>
+    </div>
+
+    <div class="relative w-full h-48 bg-[url('https://api.placeholder.com/world-map-dark')] bg-contain bg-no-repeat bg-center opacity-40">
+        <div class="absolute top-[45%] left-[70%] w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div> <div class="absolute top-[35%] left-[25%] w-2 h-2 bg-red-500 rounded-full animate-ping"></div> <div class="absolute top-[48%] left-[60%] w-2 h-2 bg-yellow-500 rounded-full animate-ping"></div> </div>
+
+    <div class="grid grid-cols-3 gap-4 mt-6 text-center">
+        <div class="p-2 border border-white/5 rounded-xl">
+            <p class="text-[6px] text-gray-500 uppercase">Active Users</p>
+            <p class="text-xs font-black text-cyan-400" id="user-count">01</p>
+        </div>
+        <div class="p-2 border border-white/5 rounded-xl">
+            <p class="text-[6px] text-gray-500 uppercase">Top Region</p>
+            <p class="text-xs font-black text-white">Lucknow</p>
+        </div>
+        <div class="p-2 border border-white/5 rounded-xl">
+            <p class="text-[6px] text-gray-500 uppercase">Threat Level</p>
+            <p class="text-xs font-black text-green-500">Zero</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function refreshGlobalStats() {
+        console.log("HAI: Fetching Global Node Data...");
+        speak("स्वामी जी, वैश्विक नोड्स सुरक्षित हैं। उत्तर प्रदेश से संयुक्त अरब अमीरात तक संचार सुचारू है।");
+    }
+</script>
