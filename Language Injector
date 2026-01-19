@@ -1,0 +1,18 @@
+function speak(text) {
+    const msg = new SpeechSynthesisUtterance(text);
+    
+    // यूजर की सिस्टम भाषा का पता लगाना
+    const userLang = navigator.language || navigator.userLanguage; 
+    msg.lang = userLang; // ऑटोमैटिक भाषा सेट करना
+
+    // देश के अनुसार विशेष संदेश
+    if (userLang.includes('hi')) {
+        console.log("Language: Hindi");
+    } else if (userLang.includes('ar')) {
+        console.log("Language: Arabic");
+    } else {
+        console.log("Language: Default (English)");
+    }
+
+    window.speechSynthesis.speak(msg);
+}
