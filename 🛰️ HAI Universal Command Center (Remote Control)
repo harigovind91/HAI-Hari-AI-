@@ -1,5 +1,5 @@
 // UNIVERSAL REMOTE SYNC LOGIC
-const HAI_REMOTE_KEY = "786-HS-CHAUHAN-392";
+const HAI_REMOTE_KEY = "292-HS-CHAUHAN-239";
 
 function syncGlobalCommand(action) {
     console.log(`HAI: Executing Remote Action -> ${action}`);
