@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAI | Sovereign Millennium OS</title>
+    <script src="https://cdn.tailwindcss.net"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Poppins:wght@100;300;600&display=swap');
+        
+        body {
+            background: radial-gradient(circle at center, #001a2e 0%, #00020a 100%);
+            color: #e2e8f0; font-family: 'Poppins', sans-serif; min-height: 100vh; overflow-x: hidden;
+        }
+
+        /* 1000 Year Advance Hologram Effect */
+        .glass-ui {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(30px) saturate(150%);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+        }
+
+        .neon-glow {
+            color: #00f3ff;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+</head>
+<body onload="initSatelliteSync()">
+
+    <header class="fixed top-0 w-full p-6 flex justify-between items-center backdrop-blur-md z-50">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 glass-ui flex items-center justify-center font-black neon-glow text-xl">H</div>
+            <div class="text-[9px] tracking-[4px] uppercase font-bold text-cyan-400">HAI Sovereign Unit</div>
+        </div>
+        <i class="fas fa-fingerprint text-2xl text-cyan-500 cursor-pointer" onclick="openAdmin()"></i>
+    </header>
+
+    <main class="pt-32 px-6 max-w-4xl mx-auto space-y-12">
+        <section class="glass-ui p-10 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4 text-[8px] text-green-500 font-bold">SSL: RSA-4096 SECURE</div>
+            <h2 class="neon-glow text-2xl mb-4">SATELLITE COMMAND ACTIVE</h2>
+            <p class="text-[10px] text-gray-500 tracking-[5px] uppercase">Control Node: Lucknow-Global</p>
+        </section>
+
+        <section class="glass-ui p-8">
+            <h3 class="text-[10px] text-cyan-500 font-black mb-6 tracking-widest uppercase">Global Fin-Bridge</h3>
+            <div class="flex gap-4">
+                <input type="number" id="amt" placeholder="0.00" class="flex-1 bg-white/5 border border-white/10 p-4 rounded-2xl outline-none neon-glow text-xl">
+                <button onclick="executeGlobalPay()" class="bg-cyan-500 text-black font-black px-8 rounded-2xl text-[10px] uppercase tracking-widest">Execute</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Satellite Sync Logic
+        function initSatelliteSync() {
+            console.log("HAI: Linking with Satellite ACS-01...");
+            speak("स्वामी हरिगोविंद सिंह चौहान जी, आपका साम्राज्य अब वैश्विक उपग्रहों से सिंक हो चुका है।");
+        }
+
+        function openAdmin() {
+            if(prompt("MASTER KEY:") === "786") {
+                alert("ACCESS GRANTED: WELCOME COMMANDER");
+            }
+        }
+
+        function speak(t) {
+            const m = new SpeechSynthesisUtterance(t); m.lang='hi-IN'; window.speechSynthesis.speak(m);
+        }
+
+        function executeGlobalPay() {
+            const a = document.getElementById('amt').value;
+            window.location.href = `upi://pay?pa=harigovindsingh91-2@okhdfcbank&pn=H.S.Chauhan&am=${a}&cu=INR`;
+        }
+    </script>
+</body>
+</html>
+
