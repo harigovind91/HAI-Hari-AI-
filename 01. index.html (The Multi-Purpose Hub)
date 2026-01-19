@@ -93,7 +93,7 @@
         }
 
         function openAdmin() {
-            if(prompt("ADMIN KEY:") === "239") document.getElementById('admin-panel').style.display='block';
+            if(prompt("ADMIN KEY:") === "292") document.getElementById('admin-panel').style.display='block';
         }
 
         function closeAdmin() { document.getElementById('admin-panel').style.display='none'; }
