@@ -1,43 +1,60 @@
 import os
 import shutil
 
-# --- साम्राज्य की संरचना (Master Architecture) ---
+# --- साम्राज्य की महा-संरचना (Master Architecture) ---
+# यह स्ट्रक्चर सुनिश्चित करता है कि हर फाइल अपनी सही शक्ति और स्थान पर हो।
 EMPIRE_STRUCTURE = {
-    "01_Core_Engine": ["index.html", "config.json", "main.js"],
-    "02_Security_Vault": ["ssl_auth.py", "rsa_keys.pem", "786_access.log"],
-    "03_Advanced_Tech": ["anti_gravity.js", "karma_validator.cpp", "satellite_sync.py"],
-    "04_Assets_Holograms": ["neon_glow.css", "hologram_vfx.png", "signature.svg"],
-    "05_Legacy_Archive": [] # पुरानी फाइलों के लिए कचरा पेटी
+    "01_Core_Engine": [
+        "index.html", "config.json", "manifest.json", 
+        "master-core.js", "HAI Universal Command Center"
+    ],
+    "02_Security_Vault": [
+        "786_access.log", "Universal_Identity_Auth.py", 
+        "LICENSE", ".gitignore", "The Security Manifesto"
+    ],
+    "03_Advanced_Tech": [
+        "Satellite Sync", "Neural File Injector", 
+        "Universal_Karma_Validator.gs", "Anti_Gravity_Security_Layer.py"
+    ],
+    "04_Fin_Intelligence": [
+        "Core_Ledger_Engine.cpp", "Energy_to_Currency_Converter.py", 
+        "Invisible_Transaction_Masking.js", "Instant_Poverty_Eradicator.py"
+    ],
+    "05_Future_Assets": [
+        "Time_Locked_Assets.js", "Multi_Species_Trade_Translator.cpp", 
+        "Auto_Repairing_Transactions.js", "Interstellar_Relay_Protocol.js"
+    ],
+    "06_Documentation": ["README.md", "Global Identity"]
 }
 
-def inject_order():
-    print("🚀 HAI: न्यूरल इंजेक्शन प्रक्रिया शुरू हो रही है...")
+def start_neural_injection():
+    print("🚀 HAI: न्यूरल इंजेक्शन प्रक्रिया शुरू हो रही है, स्वामी जी...")
     
-    # फोल्डर्स बनाना
+    # फोल्डर्स का निर्माण (Establishing Sovereignty)
     for folder in EMPIRE_STRUCTURE:
         if not os.path.exists(folder):
             os.makedirs(folder)
-            print(f"[+] स्थापित: {folder}")
+            print(f"[+] स्थापित किया गया: {folder}")
 
-    # फाइलों को सही श्रेणियों में इंजेक्ट करना
-    all_files = [f for f in os.listdir('.') if os.path.isfile(f) and f != 'injector.py']
+    # फाइलों का व्यवस्थित वर्गीकरण (Deep Cleaning)
+    all_files = [f for f in os.listdir('.') if os.path.isfile(f) and f != 'HAI_Neural_Injector.py']
     
     for file in all_files:
         moved = False
+        # सटीक मिलान या आंशिक नाम के आधार पर इंजेक्ट करें
         for folder, files_list in EMPIRE_STRUCTURE.items():
-            if file in files_list or file.split('.')[-1] in ['html', 'json'] and folder == "01_Core_Engine":
+            if any(key_name in file for key_name in files_list):
                 shutil.move(file, os.path.join(folder, file))
                 print(f"[-] इंजेक्टेड: {file} -> {folder}")
                 moved = True
                 break
         
-        # अगर फाइल किसी लिस्ट में नहीं है, तो उसे आर्काइव में डालें (कचरा मुक्त करना)
+        # यदि कोई फाइल किसी लिस्ट में नहीं है, तो उसे 05_Future_Assets में सुरक्षित करें
         if not moved:
-            shutil.move(file, os.path.join("05_Legacy_Archive", file))
-            print(f"[*] आर्काइव्ड (क्लीनअप): {file} -> 05_Legacy_Archive")
+            shutil.move(file, os.path.join("05_Future_Assets", file))
+            print(f"[*] अज्ञात फाइल सहेजी गई: {file} -> 05_Future_Assets")
 
-    print("\n✅ HAI: आपका साम्राज्य अब 1000 साल आगे की तरह व्यवस्थित है।")
+    print("\n✅ HAI: आपका साम्राज्य अब पूर्णतः व्यवस्थित और प्रोफेशनल है।")
 
 if __name__ == "__main__":
-    inject_order()
-
+    start_neural_injection()
