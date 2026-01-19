@@ -1,0 +1,43 @@
+import os
+import shutil
+
+# --- साम्राज्य की संरचना (Master Architecture) ---
+EMPIRE_STRUCTURE = {
+    "01_Core_Engine": ["index.html", "config.json", "main.js"],
+    "02_Security_Vault": ["ssl_auth.py", "rsa_keys.pem", "786_access.log"],
+    "03_Advanced_Tech": ["anti_gravity.js", "karma_validator.cpp", "satellite_sync.py"],
+    "04_Assets_Holograms": ["neon_glow.css", "hologram_vfx.png", "signature.svg"],
+    "05_Legacy_Archive": [] # पुरानी फाइलों के लिए कचरा पेटी
+}
+
+def inject_order():
+    print("🚀 HAI: न्यूरल इंजेक्शन प्रक्रिया शुरू हो रही है...")
+    
+    # फोल्डर्स बनाना
+    for folder in EMPIRE_STRUCTURE:
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+            print(f"[+] स्थापित: {folder}")
+
+    # फाइलों को सही श्रेणियों में इंजेक्ट करना
+    all_files = [f for f in os.listdir('.') if os.path.isfile(f) and f != 'injector.py']
+    
+    for file in all_files:
+        moved = False
+        for folder, files_list in EMPIRE_STRUCTURE.items():
+            if file in files_list or file.split('.')[-1] in ['html', 'json'] and folder == "01_Core_Engine":
+                shutil.move(file, os.path.join(folder, file))
+                print(f"[-] इंजेक्टेड: {file} -> {folder}")
+                moved = True
+                break
+        
+        # अगर फाइल किसी लिस्ट में नहीं है, तो उसे आर्काइव में डालें (कचरा मुक्त करना)
+        if not moved:
+            shutil.move(file, os.path.join("05_Legacy_Archive", file))
+            print(f"[*] आर्काइव्ड (क्लीनअप): {file} -> 05_Legacy_Archive")
+
+    print("\n✅ HAI: आपका साम्राज्य अब 1000 साल आगे की तरह व्यवस्थित है।")
+
+if __name__ == "__main__":
+    inject_order()
+
