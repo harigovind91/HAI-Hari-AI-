@@ -75,7 +75,7 @@
             </div>
             <div>
                 <p class="text-[8px] font-bold text-cyan-400 uppercase">HAI Global Pay Bridge</p>
-                <p class="text-[6px] text-gray-500">Secured by Master Key 786</p>
+                <p class="text-[6px] text-gray-500">Secured by Master Key 392</p>
             </div>
         </div>
         <div class="text-[8px] text-right font-bold text-gray-400">
@@ -108,7 +108,7 @@
 
         // मास्टर की एक्सेस
         function masterAccess() {
-            const pin = prompt("ENTER MASTER KEY (786):");
+            const pin = prompt("ENTER MASTER KEY (392):");
             if (pin === "392") { alert("Welcome Director Chauhan Ji"); }
         }
     </script>
