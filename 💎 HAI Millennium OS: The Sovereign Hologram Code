@@ -203,7 +203,7 @@
 
         function openAdmin() {
             const k = prompt("SECURITY KEY (RSA-AUTH):");
-            if(k === "239" || k === "292") {
+            if(k === "786" || k === "392") {
                 document.getElementById('admin-panel').style.display = 'block';
                 logAccess();
             }
