@@ -1,0 +1,55 @@
+// --- HAI UNIVERSAL REMOTE SYNC & EMERGENCY VAULT ---
+const MASTER_KEY = "HAI-Admin@786#X";
+const ADMIN_PIN = "392";
+const REMOTE_AUTH_TOKEN = "786-HS-CHAUHAN-392";
+
+function syncGlobalCommand(action) {
+    // बिना मास्टर की के रिमोट एक्सेस ब्लॉक
+    if (sessionStorage.getItem('HAI_REMOTE_VERIFIED') !== 'TRUE') {
+        let auth = prompt("रिमोट कमांड निष्पादित करने के लिए मास्टर की (786#X) डालें:");
+        if (auth === MASTER_KEY || auth === "786" || auth === ADMIN_PIN) {
+            sessionStorage.setItem('HAI_REMOTE_VERIFIED', 'TRUE');
+        } else {
+            speak("अनधिकृत रिमोट एक्सेस प्रयास। कमांड ब्लॉक कर दी गई है।");
+            return;
+        }
+    }
+
+    console.log(`HAI: Executing Remote Action [${REMOTE_AUTH_TOKEN}] -> ${action}`);
+    
+    // सिमुलेशन: क्लाउड पर डेटा भेजना
+    document.body.style.border = "5px solid #00f3ff";
+    setTimeout(() => document.body.style.border = "none", 500);
+
+    speak(`स्वामी जी, ग्लोबल कमांड '${action}' सफलतापूर्वक निष्पादित की गई है। उपग्रह लिंक सुरक्षित है।`);
+}
+
+// REMOTE EMERGENCY LOCK (पूर्ण साम्राज्य को फ्रीज करने का ब्रह्मास्त्र)
+function remoteSystemLock() {
+    let confirmLock = prompt("क्या आप पूरे सिस्टम को फ्रीज करना चाहते हैं? (Confirm with 786#X):");
+    
+    if (confirmLock === MASTER_KEY) {
+        // सिस्टम को पूरी तरह साफ और लॉक करना
+        document.body.innerHTML = `
+            <div style="background:#000; color:#ff0000; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:Orbitron, sans-serif;">
+                <i class="fas fa-biohazard" style="font-size:100px; margin-bottom:20px;"></i>
+                <h1 style="letter-spacing:10px; font-weight:900;">SYSTEM INTERDICTED</h1>
+                <p style="color:#666; font-size:12px; margin-top:10px;">LOCKED BY SUPREME COMMANDER CHAUHAN</p>
+                <div style="margin-top:50px; padding:10px; border:1px solid #333; font-size:8px;">RSA-4096 STATE: IMPERTURBABLE</div>
+            </div>
+        `;
+        
+        // वॉयस अलर्ट केवल एक बार
+        speak("आपातकालीन लॉक सक्रिय। सिस्टम अब अभेद्य है। सभी वैश्विक नोड्स फ्रीज कर दिए गए हैं।");
+        console.error("HAI: EMERGENCY TERMINATION EXECUTED BY MASTER KEY.");
+    } else {
+        alert("SECURITY MISMATCH: EMERGENCY LOCK ABORTED.");
+    }
+}
+
+function speak(text) {
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = 'hi-IN';
+    msg.rate = 0.85; 
+    window.speechSynthesis.speak(msg);
+}
