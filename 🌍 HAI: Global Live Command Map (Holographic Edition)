@@ -1,4 +1,12 @@
-<div class="hologram-panel p-8 mt-10 border-t-2 border-cyan-500/20 bg-blue-900/5 relative overflow-hidden">
+<div class="hologram-panel p-8 mt-10 border-t-2 border-cyan-500/20 bg-blue-900/5 relative overflow-hidden group">
+    <div id="node-lock" class="absolute inset-0 z-50 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center transition-all duration-500">
+        <i class="fas fa-satellite-dish text-cyan-500 text-3xl mb-4 animate-bounce"></i>
+        <button onclick="unlockNodes()" class="px-6 py-2 border border-cyan-500 text-cyan-400 text-[10px] tracking-[3px] uppercase hover:bg-cyan-500 hover:text-black transition-all">
+            Unlock Satellite Link
+        </button>
+        <p class="text-[6px] text-gray-600 mt-2">REQUIRED: MASTER KEY 786#X</p>
+    </div>
+
     <div class="flex justify-between items-center mb-6">
         <div>
             <h3 class="neon-glow text-sm tracking-[4px] uppercase italic">Global Live Nodes</h3>
@@ -10,7 +18,13 @@
     </div>
 
     <div class="relative w-full h-48 bg-[url('https://api.placeholder.com/world-map-dark')] bg-contain bg-no-repeat bg-center opacity-40">
-        <div class="absolute top-[45%] left-[70%] w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div> <div class="absolute top-[35%] left-[25%] w-2 h-2 bg-red-500 rounded-full animate-ping"></div> <div class="absolute top-[48%] left-[60%] w-2 h-2 bg-yellow-500 rounded-full animate-ping"></div> </div>
+        <div class="absolute top-[45%] left-[70%] w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div>
+        <span class="absolute top-[48%] left-[72%] text-[6px] text-cyan-400">UP/LKO</span>
+        
+        <div class="absolute top-[48%] left-[60%] w-2 h-2 bg-yellow-500 rounded-full animate-ping"></div>
+        
+        <div class="absolute top-[35%] left-[25%] w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
+    </div>
 
     <div class="grid grid-cols-3 gap-4 mt-6 text-center">
         <div class="p-2 border border-white/5 rounded-xl">
@@ -19,18 +33,45 @@
         </div>
         <div class="p-2 border border-white/5 rounded-xl">
             <p class="text-[6px] text-gray-500 uppercase">Top Region</p>
-            <p class="text-xs font-black text-white">Lucknow</p>
+            <p class="text-xs font-black text-white uppercase">Lucknow</p>
         </div>
         <div class="p-2 border border-white/5 rounded-xl">
             <p class="text-[6px] text-gray-500 uppercase">Threat Level</p>
-            <p class="text-xs font-black text-green-500">Zero</p>
+            <p class="text-xs font-black text-green-500">ZERO</p>
         </div>
     </div>
 </div>
 
 <script>
+    const MASTER_KEY = "HAI-Admin@786#X";
+    const MASTER_PIN = "392";
+
+    function unlockNodes() {
+        let auth = prompt("ENTER MASTER KEY (786#X):");
+        if(auth === MASTER_KEY || auth === MASTER_PIN) {
+            document.getElementById('node-lock').style.display = 'none';
+            refreshGlobalStats();
+        } else {
+            speak("सुरक्षा उल्लंघन! सैटेलाइट लिंक ब्लॉक कर दिया गया है।");
+            alert("ACCESS DENIED");
+        }
+    }
+
     function refreshGlobalStats() {
         console.log("HAI: Fetching Global Node Data...");
         speak("स्वामी जी, वैश्विक नोड्स सुरक्षित हैं। उत्तर प्रदेश से संयुक्त अरब अमीरात तक संचार सुचारू है।");
+        
+        // सिमुलेशन: यूजर काउंट बढ़ाना
+        let count = 1;
+        setInterval(() => {
+            count += Math.floor(Math.random() * 5);
+            document.getElementById('user-count').innerText = count.toString().padStart(2, '0');
+        }, 5000);
+    }
+
+    function speak(text) {
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.lang = 'hi-IN';
+        window.speechSynthesis.speak(msg);
     }
 </script>
