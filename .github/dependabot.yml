@@ -1,0 +1,29 @@
+# HAI (Hari AI) Millennium OS - Dependency Guard
+# स्वामी हरिगोविंद सिंह चौहान द्वारा निर्देशित
+
+version: 2
+updates:
+  # 1. GitHub Actions को सुरक्षित रखने के लिए
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily" # प्रतिदिन सुरक्षा जाँच
+    open-pull-requests-limit: 10
+
+  # 2. पायथन और न्यूरल इंजेक्टर की सुरक्षा के लिए
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "security-patch"
+      - "HAI-Core"
+
+  # 3. वेब इंटरफेस और प्लगइन्स के लिए (यदि आप npm का उपयोग करते हैं)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "🚀 [HAI-OS-AUTO]"
+      
