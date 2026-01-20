@@ -1,0 +1,59 @@
+<div class="hologram-panel p-4 flex items-center gap-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 mt-4 relative">
+    <div id="lang-lock" class="absolute inset-0 z-10 bg-black/40 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+        <i class="fas fa-lock text-[8px] text-cyan-500/50 mr-2"></i>
+        <button onclick="unlockLanguage()" class="text-[7px] text-cyan-400 font-black tracking-widest uppercase hover:text-white transition">Unlock Language Relay</button>
+    </div>
+
+    <i class="fas fa-language text-cyan-400 text-sm"></i>
+    <select id="lang-select" onchange="manualLangChange()" class="bg-transparent text-[9px] text-white font-black uppercase tracking-widest outline-none cursor-pointer">
+        <option value="hi-IN" class="bg-black text-white">हिन्दी (India)</option>
+        <option value="en-US" class="bg-black text-white">English (Global)</option>
+        <option value="ar-SA" class="bg-black text-white">العربية (UAE)</option>
+        <option value="ja-JP" class="bg-black text-white">日本語 (Japan)</option>
+        <option value="ru-RU" class="bg-black text-white">Русский (Russia)</option>
+    </select>
+    <div class="w-[1px] h-4 bg-white/10 mx-2"></div>
+    <span class="text-[7px] text-cyan-500 font-bold tracking-[2px]" id="lang-status">SOVEREIGN MODE</span>
+</div>
+
+<script>
+    const MASTER_KEY = "HAI-Admin@786#X";
+    const ADMIN_PIN = "392";
+
+    // भाषा अनलॉक करने का फंक्शन
+    function unlockLanguage() {
+        let auth = prompt("भाषा रिले अनलॉक करने के लिए मास्टर की (786#X) डालें:");
+        if (auth === MASTER_KEY || auth === ADMIN_PIN) {
+            document.getElementById('lang-lock').style.display = 'none';
+            speak("नमस्ते स्वामी जी, वैश्विक भाषा रिले सक्रिय है।", 'hi-IN');
+        } else {
+            alert("SECURITY DENIED: UNAUTHORIZED OVERRIDE ATTEMPT.");
+        }
+    }
+
+    function manualLangChange() {
+        const selectedLang = document.getElementById('lang-select').value;
+        const langNames = {
+            'hi-IN': "नमस्ते स्वामी जी, हिन्दी भाषा सक्रिय है।",
+            'en-US': "Greetings Master, English is now active.",
+            'ar-SA': "مرحباً سيدي، العربية نشطة الآن",
+            'ja-JP': "こんにちは主人、日本語が有効です",
+            'ru-RU': "Приветствую, хозяин, русский язык активен"
+        };
+
+        document.getElementById('lang-status').innerText = selectedLang.split('-')[0].toUpperCase() + " ACTIVE";
+        
+        // विशेष: चुनी गई भाषा में ही कन्फर्मेशन देना
+        speak(langNames[selectedLang] || "Protocol Updated", selectedLang);
+        
+        console.log(`HAI: Language Shift -> ${selectedLang} Under Sovereign Control`);
+    }
+
+    function speak(text, langCode) {
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.lang = langCode || 'hi-IN';
+        msg.rate = 0.95; // राजकीय स्पष्टता के लिए
+        msg.pitch = 1.0;
+        window.speechSynthesis.speak(msg);
+    }
+</script>
