@@ -2,133 +2,152 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAI | Sovereign Millennium OS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HAI | Sovereign Master OS</title>
     <script src="https://cdn.tailwindcss.net"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Great+Vibes&family=Poppins:wght@200;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Poppins:wght@200;600&display=swap');
         
         :root { --accent: #00f3ff; --bg: #00020a; --glass: rgba(255, 255, 255, 0.03); }
         body.royal-mode { --accent: #ffd700; --bg: #0d0d0d; }
         body.light-mode { --accent: #0066ff; --bg: #f8fafc; color: #1e293b; }
 
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: #fff; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); overflow-x: hidden; }
-        .glass-panel { background: var(--glass); backdrop-filter: blur(25px); border: 1px solid var(--accent); border-radius: 35px; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: #fff; transition: 0.5s ease; overflow-x: hidden; touch-action: manipulation; }
+        .glass-panel { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--accent); border-radius: 24px; transition: 0.3s; }
+        .glass-panel:hover { border-color: #fff; box-shadow: 0 0 20px var(--accent); }
         .neon-glow { text-shadow: 0 0 15px var(--accent); color: var(--accent); }
-        .signature { font-family: 'Great Vibes', cursive; color: var(--accent); font-size: 35px; }
         
-        .theme-btn { width: 35px; height: 35px; border-radius: 50%; border: 2px solid #fff; cursor: pointer; transition: 0.3s; }
-        .theme-btn:hover { transform: scale(1.2); }
+        /* रिस्पॉन्सिव ग्रिड और लेआउट */
+        .container-custom { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
         
-        /* बैज एनिमेशन */
-        @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 243, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); }
+        /* वॉयस पल्स */
+        .mic-active { animation: pulse 1.5s infinite; background: #ff0055 !important; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(255, 0, 85, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); } }
+
+        /* मोबाइल ऑप्टिमाइजेशन */
+        @media (max-width: 640px) {
+            .glass-panel { padding: 1.5rem !important; border-radius: 20px; }
+            .header-text { font-size: 8px !important; }
+            footer { padding: 1.5rem !important; }
         }
-        .security-pulse { animation: pulse-border 2s infinite; }
     </style>
 </head>
-<body class="pb-40" id="main-body" onload="initSystem()">
+<body class="pb-32 sm:pb-40" id="main-body" onload="masterInitialization()">
 
-    <div class="fixed top-24 left-6 z-[5000] flex flex-col gap-4 bg-black/40 p-3 rounded-full backdrop-blur-lg border border-white/10">
-        <div onclick="setTheme('dark')" class="theme-btn bg-black shadow-[0_0_10px_cyan]"></div>
-        <div onclick="setTheme('royal')" class="theme-btn bg-yellow-500 shadow-[0_0_10px_gold]"></div>
-        <div onclick="setTheme('light')" class="theme-btn bg-blue-100 shadow-[0_0_10px_blue]"></div>
-    </div>
-
-    <div class="fixed bottom-32 right-6 z-[5000] group cursor-help">
-        <div class="relative flex items-center gap-2 bg-black/80 backdrop-blur-xl border border-cyan-500/30 p-2 px-3 rounded-2xl security-pulse">
-            <i class="fas fa-shield-check text-cyan-400 text-sm"></i>
-            <div class="flex flex-col leading-none">
-                <span class="text-[7px] font-black tracking-[2px] text-white uppercase font-['Orbitron']">Level-10-Alpha</span>
-                <span class="text-[5px] text-cyan-500 font-bold uppercase tracking-wider">Secured System</span>
+    <header class="fixed top-0 w-full z-50 bg-black/60 backdrop-blur-3xl border-b border-white/10">
+        <div class="container-custom py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white text-black flex items-center justify-center rounded-xl font-black text-xl sm:text-2xl shadow-lg">H</div>
+                <div class="header-text font-['Orbitron'] tracking-[2px] sm:tracking-[3px] text-[10px] sm:text-[12px]">
+                    <p class="neon-glow">HAI MILLENNIUM MASTER</p>
+                    <p class="opacity-40" id="user-greeting">MASTER CORE ACTIVE</p>
+                </div>
             </div>
-            <div class="absolute bottom-full right-0 mb-3 w-40 p-3 bg-black/95 border border-cyan-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-2xl">
-                <p class="text-[8px] text-gray-400 italic">"Avikary Cosy Science द्वारा प्रमाणित। एन्क्रिप्शन सक्रिय है।"</p>
+            <div class="flex gap-4 sm:gap-6 items-center">
+                <i class="fas fa-fingerprint text-2xl sm:text-3xl cursor-pointer text-cyan-400 hover:scale-110 transition" onclick="runFaceScan()"></i>
             </div>
-        </div>
-    </div>
-
-    <header class="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-black/40 backdrop-blur-3xl border-b border-white/10">
-        <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-white text-black flex items-center justify-center rounded-2xl font-black text-2xl shadow-lg">H</div>
-            <div class="text-[10px] font-['Orbitron'] tracking-[3px]">
-                <p class="neon-glow text-cyan-400">HAI MILLENNIUM MASTER</p>
-                <p class="opacity-40">H.S. CHAUHAN</p>
-            </div>
-        </div>
-        <div class="flex gap-6 items-center">
-             <i class="fas fa-fingerprint text-3xl cursor-pointer text-cyan-400" onclick="openAdmin()"></i>
         </div>
     </header>
 
-    <main class="pt-32 px-6 max-w-xl mx-auto space-y-10">
-        <div class="glass-panel p-8 text-center relative overflow-hidden">
-            <h2 class="text-[10px] font-black tracking-[5px] mb-4 opacity-50 uppercase">Era Progression</h2>
-            <input type="range" min="2026" max="3026" value="2026" id="year-slider" class="w-full accent-cyan-500 h-2 cursor-pointer">
-            <p id="year-val" class="text-4xl font-black mt-4 font-['Orbitron'] neon-glow">2026</p>
-            <p id="pred-text" class="text-sm mt-6 italic opacity-70">"Avikary Cosy Science का स्वर्ण युग।"</p>
+    <div class="fixed top-24 left-4 z-[5000] flex flex-col gap-3 bg-black/50 p-2 rounded-2xl border border-white/10 backdrop-blur-lg">
+        <div onclick="setTheme('dark')" class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-cyan-900 border border-cyan-400 cursor-pointer"></div>
+        <div onclick="setTheme('royal')" class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-yellow-900 border border-yellow-400 cursor-pointer"></div>
+        <div onclick="setTheme('light')" class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-blue-100 border border-blue-600 cursor-pointer"></div>
+    </div>
+
+    <main class="container-custom pt-28 sm:pt-36 space-y-6 sm:space-y-10">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
+            <div class="glass-panel p-6 sm:p-10 text-center flex flex-col justify-center">
+                <h2 class="text-[10px] font-black tracking-[5px] mb-6 opacity-50 uppercase">Temporal Alignment</h2>
+                <input type="range" min="2026" max="3026" value="2026" id="year-slider" class="w-full accent-cyan-500 h-2 cursor-pointer">
+                <p id="year-val" class="text-3xl sm:text-5xl font-black mt-4 font-['Orbitron'] neon-glow">2026</p>
+                <p id="pred-text" class="text-xs sm:text-sm mt-6 italic opacity-70">"Avikary Cosy Science का स्वर्ण युग।"</p>
+            </div>
+
+            <div class="glass-panel p-6 sm:p-10 flex flex-col justify-center border-l-4 border-l-cyan-500">
+                <p class="text-[9px] uppercase tracking-widest text-cyan-500 mb-4">Live System Intelligence</p>
+                <p id="speech-text" class="text-sm sm:text-base text-gray-300 italic">"आदेश की प्रतीक्षा में..."</p>
+                <div class="mt-6 flex items-center gap-3">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
+                    <span class="text-[8px] font-bold tracking-widest opacity-50 uppercase">Network: Secured Alpha-10</span>
+                </div>
+            </div>
         </div>
 
-        <div class="glass-panel p-8 border-t-4 border-cyan-500">
+        <div class="glass-panel p-8 sm:p-12 border-t-4 border-cyan-500">
             <p class="text-[10px] font-black mb-6 uppercase tracking-widest text-center">Imperial Financial Bridge</p>
-            <input type="number" id="amt-input" placeholder="₹ Amount" class="w-full bg-black/40 border border-white/10 p-5 rounded-3xl mb-6 text-center text-xl font-bold outline-none focus:border-cyan-400">
-            <button onclick="executePay()" class="w-full py-5 bg-cyan-500 text-black font-black rounded-3xl shadow-xl hover:scale-95 transition">EXECUTE TRANSFER</button>
+            <div class="max-w-md mx-auto">
+                <input type="number" id="amt-input" placeholder="₹ Amount" class="w-full bg-black/40 border border-white/10 p-4 sm:p-5 rounded-3xl mb-6 text-center text-xl font-bold outline-none focus:border-cyan-400 text-white">
+                <button onclick="executePay()" class="w-full py-4 sm:py-5 bg-cyan-500 text-black font-black rounded-3xl shadow-xl hover:brightness-110 active:scale-95 transition">EXECUTE TRANSFER</button>
+            </div>
         </div>
 
-        <div class="text-center py-6">
-            <span class="signature">H.S. Chauhan</span>
-        </div>
     </main>
 
-    <footer class="fixed bottom-0 w-full p-10 flex justify-around items-center bg-black/90 backdrop-blur-md border-t border-white/10">
-        <i class="fas fa-history text-2xl opacity-20"></i>
-        <div onclick="startVoiceSearch()" class="w-20 h-20 bg-cyan-500 rounded-full -mt-20 flex items-center justify-center border-[10px] border-[#00020a] shadow-[0_0_50px_rgba(0,243,255,0.6)] cursor-pointer hover:scale-110 active:scale-90 transition">
-            <i class="fas fa-microphone text-black text-3xl"></i>
+    <footer class="fixed bottom-0 w-full p-6 sm:p-10 flex justify-around items-center bg-black/90 backdrop-blur-2xl border-t border-white/10">
+        <i class="fas fa-home text-xl sm:text-2xl opacity-20 hover:opacity-100 cursor-pointer transition" onclick="location.reload()"></i>
+        
+        <div onclick="startGlobalVoice()" id="voice-trigger" class="w-16 h-16 sm:w-24 sm:h-24 bg-cyan-500 rounded-full -mt-16 sm:-mt-24 flex items-center justify-center border-[6px] sm:border-[10px] border-[#00020a] shadow-2xl cursor-pointer hover:scale-110 active:scale-90 transition">
+            <i class="fas fa-microphone text-black text-2xl sm:text-4xl"></i>
         </div>
-        <i class="fas fa-database text-2xl opacity-20" onclick="exportDNA()"></i>
+        
+        <i class="fas fa-shield-alt text-xl sm:text-2xl opacity-20 hover:opacity-100 cursor-pointer transition" onclick="alert('Security Policy Level-10-Alpha Active')"></i>
     </footer>
 
     <script>
-        const VAULT = { admin: "HARI_777", dna: "239" };
+        // मास्टर सेटिंग्स और वॉयस लॉजिक
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'hi-IN';
 
         function speak(msg) {
-            const speech = new SpeechSynthesisUtterance(msg);
-            speech.lang = 'hi-IN';
-            speech.rate = 0.9;
-            window.speechSynthesis.speak(speech);
+            window.speechSynthesis.cancel();
+            const utter = new SpeechSynthesisUtterance(msg);
+            utter.lang = 'hi-IN';
+            window.speechSynthesis.speak(utter);
+            document.getElementById('speech-text').innerText = msg;
         }
 
-        function initSystem() {
-            speak("प्रणाम स्वामी जी। आपकी डिजिटल सल्तनत सक्रिय है।");
+        function masterInitialization() {
+            setTimeout(() => {
+                speak("प्रणाम स्वामी जी। HAI सिस्टम सभी उपकरणों पर सक्रिय है। आपका नाम?");
+                setTimeout(() => { startGlobalVoice(); }, 4000);
+            }, 1000);
         }
 
-        function startVoiceSearch() {
-            let q = prompt("स्वामी जी, ब्रह्मांड में क्या खोजना है?");
-            if(q) {
+        function startGlobalVoice() {
+            try { recognition.start(); document.getElementById('voice-trigger').classList.add('mic-active'); }
+            catch(e) { console.log("Mic already active"); }
+        }
+
+        recognition.onresult = (e) => {
+            const cmd = e.results[0][0].transcript.toLowerCase();
+            document.getElementById('voice-trigger').classList.remove('mic-active');
+            processAction(cmd);
+        };
+
+        function processAction(cmd) {
+            if(cmd.includes("नाम")) {
+                let n = cmd.split("नाम")[1] || "यूजर";
+                speak(`स्वागत है ${n}, मैं आपकी क्या सेवा करूँ?`);
+            } else if(cmd.includes("खोजो")) {
+                let q = cmd.replace("खोजो", "");
                 speak(`${q} खोजा जा रहा है।`);
-                window.open(`https://www.google.com/search?q=${encodeURIComponent(q)}`, '_blank');
-            }
-        }
-
-        function setTheme(theme) {
-            const body = document.getElementById('main-body');
-            body.className = 'pb-40';
-            if(theme === 'royal') body.classList.add('royal-mode');
-            if(theme === 'light') body.classList.add('light-mode');
-            speak(`${theme} मोड सक्रिय।`);
-        }
-
-        function openAdmin() {
-            if(prompt("SECURITY KEY:") === VAULT.admin) {
-                speak("प्रवेश सफल। स्वागत है मास्टर चौहान।");
-                alert("ACCESS GRANTED");
+                window.open(`https://www.google.com/search?q=${q}`, '_blank');
+            } else if(cmd.includes("पेमेंट")) {
+                executePay();
             } else {
-                speak("अवैध प्रवेश की कोशिश।");
-                alert("DENIED");
+                speak("आदेश समझ नहीं आया, कृपया पुनः कहें।");
             }
+        }
+
+        function setTheme(m) {
+            const b = document.body;
+            b.className = "pb-32 sm:pb-40";
+            if(m === 'royal') b.classList.add('royal-mode');
+            if(m === 'light') b.classList.add('light-mode');
+            speak(`${m} मोड सक्रिय किया गया।`);
         }
 
         function executePay() {
@@ -137,19 +156,11 @@
             window.location.href = `upi://pay?pa=harigovindsingh91-2@okhdfcbank&pn=H.S.Chauhan&am=${a}&cu=INR`;
         }
 
-        function exportDNA() {
-            if(prompt("DNA KEY:") === VAULT.dna) {
-                speak("मास्टर डेटा एक्सपोर्ट हो रहा है।");
-                alert("DNA Exporting...");
-            }
-        }
-
         const s = document.getElementById('year-slider');
         s.oninput = function() {
             document.getElementById('year-val').innerText = this.value;
-            document.getElementById('pred-text').innerText = this.value > 2100 ? '"मानवता अब आपके साम्राज्य के अधीन है।"' : '"2026: Avikary Cosy Science का स्वर्ण युग।"';
+            document.getElementById('pred-text').innerText = this.value > 2100 ? '"मानवता अब आपके अधीन है।"' : '"2026: स्वर्ण युग।"';
         };
     </script>
 </body>
 </html>
-            
