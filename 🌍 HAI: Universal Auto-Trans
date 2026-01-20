@@ -1,0 +1,49 @@
+// --- HAI UNIVERSAL LANGUAGE SYNC & SECURITY ---
+const SOVEREIGN_ID = "HAI-Admin@786#X";
+const ADMIN_PIN = "392";
+
+function autoTranslateUI() {
+    // सुरक्षा जाँच: क्या मास्टर की सत्र (Session) में सक्रिय है?
+    const isAuth = sessionStorage.getItem('HAI_Sovereign_Auth');
+    
+    if (!isAuth) {
+        console.warn("HAI: System in Guest Mode. Awaiting Master Key 786#X.");
+        return;
+    }
+
+    const userLang = navigator.language || navigator.userLanguage;
+    const greetingMap = {
+        'hi': "नमस्ते स्वामी जी, हैई (HAI) सक्रिय है। आपके सभी नोड्स सुरक्षित हैं।",
+        'en': "Welcome Master Chauhan, I am HAI. Your sovereign system is online.",
+        'ar': "أهلاً بك يا سيدي، أنا HAI. نظامك السيادي نشط ومحمي.",
+        'ja': "ようこそ主人、私はHAIです。あなたの主権システムはオンラインで保護されています。",
+        'ru': "Добро пожаловать, хозяин, я HAI. Ваша суверенная система в сети и под защитой."
+    };
+
+    // भाषा का पता लगाकर बोलना (Sovereign Tone)
+    let message = greetingMap[userLang.substring(0,2)] || greetingMap['en'];
+    speak(message, userLang);
+
+    console.log(`HAI: User Language Detected -> ${userLang} | Status: Sovereign Access`);
+}
+
+// मास्टर की से सिस्टम को "सोयम" मोड में जगाना
+function awakeSystemWithKey() {
+    let key = prompt("HAI MILLENNIUM OS को जगाने के लिए मास्टर की (786#X) डालें:");
+    
+    if (key === SOVEREIGN_ID || key === ADMIN_PIN) {
+        sessionStorage.setItem('HAI_Sovereign_Auth', 'TRUE');
+        autoTranslateUI(); // चाबी मिलते ही भाषा सिंक और अभिवादन शुरू
+    } else {
+        alert("ACCESS DENIED: INVALID SOVEREIGN KEY.");
+        speak("सुरक्षा अलर्ट: अनधिकृत प्रवेश का प्रयास।", 'hi-IN');
+    }
+}
+
+function speak(text, lang) {
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = lang || 'hi-IN';
+    msg.rate = 0.85; // राजकीय गंभीरता के लिए गति थोड़ी धीमी
+    msg.pitch = 1.0;
+    window.speechSynthesis.speak(msg);
+}
