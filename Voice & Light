@@ -1,0 +1,42 @@
+import os
+import time
+
+def speak(text):
+    # यह कमांड आपके मोबाइल के स्पीकर से आवाज निकालेगा
+    os.system(f"termux-tts-speak '{text}'")
+
+def main_system():
+    print("------------------------------------")
+    print("   HAI (Hari AI) VOICE SYSTEM")
+    print("   Status: ONLINE & READY")
+    print("------------------------------------")
+
+    # स्वागत संदेश
+    speak("Welcome Swami Harigovind Singh, HAI system is now online")
+
+    while True:
+        cmd = input("\nAwaiting Your Command, Swami Ji: ").lower()
+
+        if "light on" in cmd:
+            os.system("termux-flashlight on")
+            speak("Light turned on, Swami Ji")
+            print(">> Hardware Action: Flashlight ON")
+
+        elif "light off" in cmd:
+            os.system("termux-flashlight off")
+            speak("Light turned off")
+            print(">> Hardware Action: Flashlight OFF")
+
+        elif "status" in cmd:
+            speak("All systems are functional and secure")
+            print(">> System: 100% Operational")
+
+        elif "exit" in cmd:
+            speak("System going to sleep. Jai Hari")
+            break
+        else:
+            print(f">> Processing: {cmd}")
+
+if __name__ == "__main__":
+    main_system()
+
