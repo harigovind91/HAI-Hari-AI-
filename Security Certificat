@@ -1,0 +1,62 @@
+<div class="flex justify-center my-10">
+    <div class="relative group cursor-pointer" onclick="verifyCertificate()">
+        <div id="cert-aura" class="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 rounded-full blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-spin-slow"></div>
+        
+        <div class="relative glass-panel px-8 py-6 flex flex-col items-center border border-white/20 backdrop-blur-3xl rounded-3xl bg-black/40">
+            <i id="cert-icon" class="fas fa-shield-halved text-4xl text-cyan-400 mb-3 drop-shadow-[0_0_15px_rgba(0,243,255,0.8)]"></i>
+            <h4 class="neon-text text-[10px] tracking-[4px] uppercase font-black text-white">Sovereign Certificate</h4>
+            <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent my-2"></div>
+            <p class="text-[8px] text-gray-400 uppercase tracking-widest">Security: <span id="security-lvl" class="text-green-500">Locked</span></p>
+            <p id="key-display" class="text-[6px] text-gray-600 mt-2 font-mono">AWAITING MASTER KEY: 786#X</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const MASTER_KEY = "HAI-Admin@786#X";
+    const ADMIN_PIN = "392";
+
+    function verifyCertificate() {
+        let auth = prompt("सर्टिफिकेट को प्रमाणित करने के लिए मास्टर की (786#X) डालें:");
+        
+        if (auth === MASTER_KEY || auth === ADMIN_PIN || auth === "786") {
+            // Success Logic
+            document.getElementById('security-lvl').innerText = "Level-10-Alpha";
+            document.getElementById('security-lvl').className = "text-cyan-400 animate-pulse";
+            document.getElementById('key-display').innerText = "VERIFIED WITH SOVEREIGN KEY: " + MASTER_KEY;
+            document.getElementById('key-display').className = "text-[6px] text-cyan-700 mt-2 font-mono";
+            document.getElementById('cert-icon').className = "fas fa-check-double text-4xl text-green-500 mb-3 drop-shadow-[0_0_15px_rgba(0,255,100,0.8)]";
+            
+            speak("स्वामी जी, आपका संप्रभु प्रमाणपत्र प्रमाणित हो चुका है। सिस्टम अब पूर्ण शक्ति के साथ सक्रिय है।");
+            console.log("HAI: Sovereign Certificate Verified Successfully.");
+        } else {
+            speak("प्रमाणीकरण विफल। अवैध चाबी।");
+            alert("🚨 UNAUTHORIZED: INVALID MASTER KEY.");
+        }
+    }
+
+    function speak(text) {
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.lang = 'hi-IN';
+        msg.rate = 0.9;
+        window.speechSynthesis.speak(msg);
+    }
+</script>
+
+<style>
+    @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+        animation: spin-slow 8s linear infinite;
+    }
+    .glass-panel {
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(30px);
+    }
+    .neon-text {
+        color: #00f3ff;
+        text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    }
+</style>
