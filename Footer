@@ -1,0 +1,47 @@
+<section class="max-w-5xl mx-auto px-8 my-20">
+    <div class="hologram-panel p-10 border-t-2 border-cyan-500/30 bg-white/5 backdrop-blur-md rounded-[40px]">
+        <div class="flex flex-col md:flex-row justify-between items-start gap-10">
+            
+            <div class="md:w-1/2">
+                <h2 class="neon-glow text-xl tracking-[5px] uppercase mb-4">Project: HAI (Hari AI)</h2>
+                <p class="text-[10px] text-gray-400 leading-relaxed text-justify italic">
+                    "HAI (Hari AI) एक संप्रभु न्यूरल इंजन है, जिसे वैश्विक व्यापार और भविष्य के संचार प्रोटोकॉल के लिए डिजाइन किया गया है। यह Avikary Cosy Science के अंतर्गत स्वामी हरिगोविंद सिंह चौहान के दूरदर्शी नेतृत्व में विकसित एक मिलेनियम ओ-एस है।"
+                </p>
+                <div class="mt-6 flex gap-4">
+                    <span class="px-4 py-1 border border-cyan-500/30 rounded-full text-[7px] text-cyan-400 font-bold uppercase tracking-widest">Global Linkage</span>
+                    <span class="px-4 py-1 border border-cyan-500/30 rounded-full text-[7px] text-cyan-400 font-bold uppercase tracking-widest">Sovereign OS</span>
+                </div>
+            </div>
+
+            <div class="md:w-1/2 grid grid-cols-2 gap-6">
+                <div>
+                    <h4 class="text-[9px] font-black text-cyan-500 uppercase tracking-widest mb-3">Core Pillars</h4>
+                    <ul class="text-[8px] text-gray-500 space-y-2 uppercase font-bold">
+                        <li>● Fin-Bridge Integration</li>
+                        <li>● Satellite Command Node</li>
+                        <li>● Neural Management</li>
+                        <li>● 1000-Year Predictive AI</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[9px] font-black text-cyan-500 uppercase tracking-widest mb-3">Compliance</h4>
+                    <ul class="text-[8px] text-gray-500 space-y-2 uppercase font-bold">
+                        <li>● Apache License 2.0</li>
+                        <li>● RSA-4096 Encrypted</li>
+                        <li>● Certified by H.S.C</li>
+                        <li>● Level-10-Alpha Security</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-10 pt-6 border-t border-white/5 flex justify-between items-center">
+            <div class="text-[8px] text-gray-600 tracking-[3px] uppercase">
+                &copy; 2026 Avikary Cosy Science Private Limited
+            </div>
+            <div class="text-[8px] text-cyan-500 font-black tracking-[5px] uppercase">
+                Director: H.S. Chauhan
+            </div>
+        </div>
+    </div>
+</section>
