@@ -1,0 +1,46 @@
+<style>
+    /* संप्रभु गहरा बैकग्राउंड */
+    body {
+        background: radial-gradient(circle at center, #001a2e 0%, #00020a 100%);
+        scroll-behavior: smooth;
+    }
+    
+    /* बटन पर होवर इफ़ेक्ट */
+    button {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    button:active {
+        transform: scale(0.95);
+        box-shadow: 0 0 50px var(--hyper-cyan);
+    }
+
+    /* कस्टम स्क्रॉलबार */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-thumb { background: var(--hyper-cyan); border-radius: 10px; }
+</style>
+
+<script>
+    // ऑटोमेशन को और अधिक 'Humanoid' बनाना
+    function executePay() {
+        const btn = event.currentTarget;
+        const amt = document.getElementById('amt-input').value || 1;
+        
+        btn.innerHTML = '<i class="fas fa-satellite-dish animate-spin"></i> SECURING LINK...';
+        speak(`${amt} रुपये का भुगतान और उपग्रह लिंक सत्यापित किया जा रहा है।`);
+        
+        setTimeout(() => {
+            window.location.href = `upi://pay?pa=harigovindsingh91-2@okhdfcbank&pn=H.S.Chauhan&am=${amt}&cu=INR`;
+            btn.innerHTML = 'PAY NOW';
+        }, 2000);
+    }
+
+    // रोबोटिक आर्म्स का विजुअल रिस्पॉन्स
+    function roboticCommand(action) {
+        speak(`आदेश प्राप्त। रोबोटिक यूनिट ${action} प्रक्रिया शुरू कर रही है।`);
+        // यहाँ हम CSS क्लास टॉगल करके पूरे पेज को हल्का सा 'Shake' कर सकते हैं जिससे मशीन चलने का अहसास हो
+        document.body.classList.add('animate-pulse');
+        setTimeout(() => document.body.classList.remove('animate-pulse'), 1000);
+    }
+</script>
+
