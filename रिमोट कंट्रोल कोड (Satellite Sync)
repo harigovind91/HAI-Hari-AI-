@@ -1,0 +1,51 @@
+// --- UNIVERSAL SATELLITE COMMAND CENTER ---
+const MASTER_KEY = "HAI-Admin@786#X";
+const ADMIN_PIN = "392";
+const HAI_SATELLITE_ID = "ACS-SAT-2026-CHAUHAN";
+
+function initiateUniversalCommand() {
+    // सुरक्षा द्वार (Master Entry)
+    let auth = prompt("यूनिवर्सल कमांड सक्रिय करने के लिए मास्टर की (786#X) डालें:");
+    
+    if (auth === MASTER_KEY || auth === ADMIN_PIN || auth === "786") {
+        console.log(`HAI: Linking with Satellite ${HAI_SATELLITE_ID}...`);
+        
+        // विजुअल इफ़ेक्ट (Sovereign Activation)
+        document.body.style.boxShadow = "inset 0 0 150px rgba(0, 243, 255, 0.4)";
+        document.body.style.transition = "all 2s ease-in-out";
+        
+        setTimeout(() => {
+            speak("स्वामी हरिगोविंद सिंह चौहान जी, यूनिवर्सल कमांड सेंटर अब आपके किसी भी डिवाइस से सिंक हो चुका है। लखनऊ से दुबई तक, आपका साम्राज्य अब आपकी उंगलियों पर है।");
+            
+            // सुरक्षित लॉग दर्ज करना (Sovereign Log)
+            const l = document.getElementById('log-content');
+            if(l) {
+                l.innerHTML = `
+                    <div class="border-l-2 border-cyan-500 pl-2 my-2">
+                        <p class="text-cyan-400 font-black text-[8px] uppercase">[SATELLITE SYNC] MASTER KEY VERIFIED</p>
+                        <p class="text-white text-[7px]">GLOBAL CONTROL ESTABLISHED: ${new Date().toLocaleTimeString()}</p>
+                    </div>
+                ` + l.innerHTML;
+            }
+        }, 1500);
+    } else {
+        speak("अवैध की! उपग्रह संचार बाधित कर दिया गया है।");
+        alert("🚨 SATELLITE LOCK: UNAUTHORIZED OVERRIDE DETECTED.");
+    }
+}
+
+// रिमोट डिवाइस डिटेक्शन विथ 'की' प्रोटेक्शन
+window.addEventListener('deviceorientation', function(event) {
+    // केवल ऑथेंटिकेटेड यूजर के लिए ही न्यूरल सेंसर डेटा सिंक होगा
+    if(sessionStorage.getItem('HAI_COMMAND_AUTH') === 'TRUE') {
+        // यह सेंसर डेटा भविष्य के 'Gesture Control' के लिए तैयार है
+        console.log("HAI: Neural Gyroscope Synced with Sovereign Key.");
+    }
+});
+
+function speak(text) {
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = 'hi-IN';
+    msg.rate = 0.85; // राजकीय गंभीरता के लिए
+    window.speechSynthesis.speak(msg);
+}
