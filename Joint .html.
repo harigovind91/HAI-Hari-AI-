@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAI | Millennium Sovereign OS</title>
+    <script src="https://cdn.tailwindcss.net"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Great+Vibes&family=Poppins:wght@200;600&display=swap');
+        
+        /* कलर वेरिएबल्स - डिफ़ॉल्ट डार्क मोड */
+        :root { 
+            --primary-bg: #00020a; 
+            --panel-bg: rgba(255, 255, 255, 0.05);
+            --text-main: #ffffff;
+            --accent: #00f3ff;
+            --border: rgba(0, 243, 255, 0.2);
+        }
+
+        /* लाइट मोड थीम */
+        body.light-mode {
+            --primary-bg: #f0f4f8;
+            --panel-bg: rgba(255, 255, 255, 0.8);
+            --text-main: #1a202c;
+            --accent: #0077ff;
+            --border: rgba(0, 119, 255, 0.2);
+        }
+
+        /* गोल्ड/रॉयल मोड थीम */
+        body.royal-mode {
+            --primary-bg: #1a1a1a;
+            --panel-bg: rgba(255, 215, 0, 0.05);
+            --text-main: #ffd700;
+            --accent: #ffcc00;
+            --border: rgba(255, 215, 0, 0.3);
+        }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: var(--primary-bg); 
+            color: var(--text-main); 
+            transition: all 0.5s ease;
+        }
+
+        .glass-panel { 
+            background: var(--panel-bg); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid var(--border); 
+            border-radius: 30px; 
+        }
+
+        .signature { font-family: 'Great Vibes', cursive; color: var(--accent); font-size: 32px; }
+        #admin-panel { display: none; position: fixed; inset: 0; z-index: 9999; background: var(--primary-bg); opacity: 0.98; padding: 20px; overflow-y: auto; }
+        .neon-btn { box-shadow: 0 0 15px var(--accent); }
+    </style>
+</head>
+<body class="pb-40" id="main-body" onload="startAutomation()">
+
+    <div class="fixed top-20 left-4 z-[4000] flex flex-col gap-2">
+        <button onclick="changeTheme('dark')" class="w-8 h-8 rounded-full bg-black border border-white"></button>
+        <button onclick="changeTheme('light')" class="w-8 h-8 rounded-full bg-white border border-black"></button>
+        <button onclick="changeTheme('royal')" class="w-8 h-8 rounded-full bg-yellow-500 border border-white"></button>
+    </div>
+
+    <header class="fixed top-0 w-full z-50 p-4 flex justify-between items-center bg-black/20 backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white text-black flex items-center justify-center rounded-xl font-black text-xl shadow-lg">H</div>
+            <div class="text-[8px] font-['Orbitron'] tracking-[2px]">
+                <p class="text-cyan-400">HAI MILLENNIUM MASTER</p>
+                <p class="opacity-50">H.S. CHAUHAN</p>
+            </div>
+        </div>
+        <div class="flex gap-4 items-center">
+             <i class="fas fa-search text-xl cursor-pointer text-cyan-500" onclick="voiceCommand()"></i>
+             <i class="fas fa-fingerprint text-xl cursor-pointer" onclick="openAdmin()"></i>
+        </div>
+    </header>
+
+    <main class="pt-32 px-6 max-w-lg mx-auto space-y-6">
+        <div class="glass-panel p-8 text-center border-t-4 border-cyan-500">
+            <h2 class="text-xs font-black tracking-widest mb-4">SYSTEM PREDICTION</h2>
+            <p id="pred-text" class="text-sm italic">"2026: Avikary Cosy Science का स्वर्ण युग।"</p>
+        </div>
+
+        <div class="glass-panel p-6">
+            <input type="number" id="amt-input" placeholder="Amount" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl mb-4 text-center">
+            <button onclick="executePay()" class="w-full py-4 bg-cyan-500 text-black font-black rounded-2xl neon-btn">EXECUTE PAYMENT</button>
+        </div>
+
+        <div class="text-center py-10">
+            <span class="signature">H.S. Chauhan</span>
+        </div>
+    </main>
+
+    <script>
+        function changeTheme(mode) {
+            const body = document.getElementById('main-body');
+            body.className = 'pb-40'; // Reset
+            if(mode === 'light') body.classList.add('light-mode');
+            if(mode === 'royal') body.classList.add('royal-mode');
+            speak(`${mode} mode activated, Swami Ji.`);
+        }
+
+        function voiceCommand() {
+            let query = prompt("स्वामी जी, क्या खोजना है?");
+            if(query) {
+                speak("Searching the universe for you.");
+                window.open(`https://www.google.com/search?q=${query}`, '_blank');
+            }
+        }
+
+        function speak(t) {
+            const m = new SpeechSynthesisUtterance(t); m.lang='hi-IN'; window.speechSynthesis.speak(m);
+        }
+
+        // पुरानी सुरक्षा कुंजियाँ
+        const MASTER_VAULT = { admin: "HARI_777" }; 
+
+        function openAdmin() {
+            let key = prompt("SECURITY KEY:");
+            if(key === MASTER_VAULT.admin) {
+                alert("ACCESS GRANTED");
+            } else {
+                alert("DENIED");
+            }
+        }
+    </script>
+</body>
+</html>
