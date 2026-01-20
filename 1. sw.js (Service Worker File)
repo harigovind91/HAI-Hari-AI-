@@ -1,0 +1,27 @@
+const CACHE_NAME = 'HAI-786-CACHE-V1';
+const assets = [
+  '/',
+  '/index.html',
+  '/manifest.json',
+  'https://cdn.tailwindcss.net',
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+];
+
+// इंस्टॉल प्रोटोकॉल
+self.addEventListener('install', evt => {
+  evt.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      console.log('HAI: Sovereign Assets Cached');
+      cache.addAll(assets);
+    })
+  );
+});
+
+// ऑफलाइन एक्सेस प्रोटोकॉल
+self.addEventListener('fetch', evt => {
+  evt.respondWith(
+    caches.match(evt.request).then(rec => {
+      return rec || fetch(evt.request);
+    })
+  );
+});
