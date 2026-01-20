@@ -3,165 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAI | Millennium Sovereign OS</title>
+    <title>HAI | Sovereign Millennium OS</title>
     <script src="https://cdn.tailwindcss.net"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Great+Vibes&family=Poppins:wght@200;600&display=swap');
         
         :root { --accent: #00f3ff; --bg: #00020a; --glass: rgba(255, 255, 255, 0.03); }
-        body.royal-theme { --accent: #ffd700; --bg: #0f0f0f; }
-        body.light-theme { --accent: #0066ff; --bg: #f4f7f6; color: #111; }
+        
+        /* थीम 2: रॉयल/गोल्डन मोड */
+        body.royal-mode { --accent: #ffd700; --bg: #0d0d0d; }
+        
+        /* थीम 3: लाइट मोड */
+        body.light-mode { --accent: #0066ff; --bg: #f8fafc; color: #1e293b; }
 
         body { font-family: 'Poppins', sans-serif; background: var(--bg); color: #fff; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); overflow-x: hidden; }
         .glass-panel { background: var(--glass); backdrop-filter: blur(25px); border: 1px solid var(--accent); border-radius: 35px; }
         .neon-glow { text-shadow: 0 0 15px var(--accent); color: var(--accent); }
         .signature { font-family: 'Great Vibes', cursive; color: var(--accent); font-size: 35px; }
         
-        #admin-panel { display: none; position: fixed; inset: 0; z-index: 9999; background: var(--bg); padding: 20px; overflow-y: auto; border: 4px solid var(--accent); }
-        .scanline { width: 100%; height: 2px; background: var(--accent); position: absolute; top: 0; animation: scan 4s linear infinite; opacity: 0.2; pointer-events: none; }
-        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+        .theme-btn { width: 35px; height: 35px; border-radius: 50%; border: 2px solid #fff; cursor: pointer; transition: 0.3s; }
+        .theme-btn:hover { transform: scale(1.2); }
     </style>
 </head>
-<body class="pb-40" onload="startAutomation()" id="main-body">
-    <div class="scanline"></div>
+<body class="pb-40" id="main-body" onload="initSystem()">
 
-    <div class="fixed top-24 left-4 z-[4000] flex flex-col gap-4">
-        <button onclick="setTheme('dark')" class="w-10 h-10 rounded-full bg-black border-2 border-cyan-500 shadow-[0_0_10px_cyan]"></button>
-        <button onclick="setTheme('light')" class="w-10 h-10 rounded-full bg-white border-2 border-blue-500 shadow-lg"></button>
-        <button onclick="setTheme('royal')" class="w-10 h-10 rounded-full bg-yellow-500 border-2 border-white shadow-[0_0_10px_gold]"></button>
+    <div class="fixed top-24 left-6 z-[5000] flex flex-col gap-4 bg-black/40 p-3 rounded-full backdrop-blur-lg border border-white/10">
+        <div onclick="setTheme('dark')" class="theme-btn bg-black shadow-[0_0_10px_cyan]"></div>
+        <div onclick="setTheme('royal')" class="theme-btn bg-yellow-500 shadow-[0_0_10px_gold]"></div>
+        <div onclick="setTheme('light')" class="theme-btn bg-blue-100 shadow-[0_0_10px_blue]"></div>
     </div>
 
-    <header class="fixed top-0 w-full z-50 p-5 flex justify-between items-center bg-black/40 backdrop-blur-2xl border-b border-white/5">
-        <div class="flex items-center gap-3">
-            <div class="w-12 h-12 bg-white text-black flex items-center justify-center rounded-2xl font-black text-2xl shadow-[0_0_20px_var(--accent)]">H</div>
-            <div class="text-[9px] font-['Orbitron'] tracking-[2px]">
-                <p class="neon-glow">HAI MILLENNIUM MASTER</p>
+    <header class="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-black/40 backdrop-blur-3xl border-b border-white/10">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-white text-black flex items-center justify-center rounded-2xl font-black text-2xl shadow-lg">H</div>
+            <div class="text-[10px] font-['Orbitron'] tracking-[3px]">
+                <p class="neon-glow text-cyan-400">HAI MILLENNIUM MASTER</p>
                 <p class="opacity-40">H.S. CHAUHAN</p>
             </div>
         </div>
         <div class="flex gap-6 items-center">
-            <i class="fas fa-search text-cyan-400 text-2xl cursor-pointer hover:scale-125 transition" onclick="voiceCommand()"></i>
-            <i class="fas fa-fingerprint text-cyan-400 text-3xl cursor-pointer hover:neon-glow" onclick="openAdmin()"></i>
+             <i class="fas fa-fingerprint text-3xl cursor-pointer text-cyan-400" onclick="openAdmin()"></i>
         </div>
     </header>
 
-    <main class="pt-32 px-6 space-y-10 max-w-lg mx-auto text-center">
-        <div class="glass-panel p-8 relative overflow-hidden">
-            <div class="flex justify-between text-[10px] mb-6 text-cyan-400 font-bold font-['Orbitron'] tracking-widest">
-                <span>ERA PROGRESS</span>
-                <span id="year-val">2026</span>
-            </div>
-            <input type="range" min="2026" max="3026" value="2026" id="year-slider" class="w-full accent-cyan-500 cursor-grab">
-            <p id="pred-text" class="text-xs text-gray-400 mt-6 leading-relaxed italic">"2026: Avikary Cosy Science का स्वर्ण युग।"</p>
+    <main class="pt-32 px-6 max-w-xl mx-auto space-y-10">
+        <div class="glass-panel p-8 text-center relative overflow-hidden">
+            <h2 class="text-[10px] font-black tracking-[5px] mb-4 opacity-50 uppercase">Era Progression</h2>
+            <input type="range" min="2026" max="3026" value="2026" id="year-slider" class="w-full accent-cyan-500 h-2 cursor-pointer">
+            <p id="year-val" class="text-4xl font-black mt-4 font-['Orbitron'] neon-glow">2026</p>
+            <p id="pred-text" class="text-sm mt-6 italic opacity-70">"Avikary Cosy Science का स्वर्ण युग।"</p>
         </div>
 
-        <div class="glass-panel p-8 border-t-4 border-cyan-500 shadow-2xl">
-            <h3 class="text-[10px] font-black uppercase tracking-[4px] mb-6">Imperial Fin-Bridge</h3>
-            <input type="number" id="amt-input" placeholder="₹ Amount" class="w-full bg-black/50 border border-white/10 p-5 rounded-3xl mb-6 text-center text-xl font-bold outline-none focus:border-cyan-400">
-            <button onclick="executePay()" class="w-full py-5 bg-cyan-500 text-black font-black rounded-3xl shadow-lg shadow-cyan-500/40 hover:brightness-125 active:scale-95 transition">INITIALIZE SECURE TRANSFER</button>
+        <div class="glass-panel p-8 border-t-4 border-cyan-500">
+            <p class="text-[10px] font-black mb-6 uppercase tracking-widest text-center">Imperial Financial Bridge</p>
+            <input type="number" id="amt-input" placeholder="₹ Amount" class="w-full bg-black/40 border border-white/10 p-5 rounded-3xl mb-6 text-center text-xl font-bold outline-none focus:border-cyan-400">
+            <button onclick="executePay()" class="w-full py-5 bg-cyan-500 text-black font-black rounded-3xl shadow-xl hover:scale-95 transition">EXECUTE TRANSFER</button>
         </div>
 
-        <div class="signature pt-10">H.S. Chauhan</div>
+        <div class="text-center py-6">
+            <span class="signature">H.S. Chauhan</span>
+        </div>
     </main>
 
-    <div id="admin-panel">
-        <div class="max-w-4xl mx-auto pt-10">
-            <div class="flex justify-between items-center border-b border-cyan-500 pb-6 mb-10">
-                <h2 class="text-2xl font-['Orbitron'] neon-glow">SUPREME COMMAND CENTER</h2>
-                <button onclick="closeAdmin()" class="bg-red-600 px-6 py-2 rounded-full font-bold">ABORT [X]</button>
-            </div>
-            <div class="glass-panel p-8 border-l-8 border-yellow-500 mb-10">
-                <h3 class="text-xs font-black text-yellow-500 mb-6 uppercase">Imperial Task Commander</h3>
-                <div class="flex gap-4">
-                    <input type="text" id="task-input" placeholder="Enter Global Task..." class="flex-1 bg-black/40 border border-white/10 p-4 rounded-2xl">
-                    <button onclick="assignTask()" class="bg-yellow-600 px-8 rounded-2xl text-black font-black uppercase">Execute</button>
-                </div>
-                <div id="task-list" class="mt-8 space-y-4"></div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="fixed bottom-0 w-full p-10 flex justify-around items-center bg-black/90 border-t border-white/10 backdrop-blur-md">
+    <footer class="fixed bottom-0 w-full p-10 flex justify-around items-center bg-black/90 backdrop-blur-md border-t border-white/10">
         <i class="fas fa-history text-2xl opacity-20"></i>
-        <div onclick="voiceCommand()" class="w-20 h-20 bg-cyan-500 rounded-full -mt-20 flex items-center justify-center border-[10px] border-[#00020a] shadow-[0_0_40px_rgba(0,243,255,0.6)] cursor-pointer hover:scale-110 active:scale-90 transition">
+        <div onclick="startVoiceSearch()" class="w-20 h-20 bg-cyan-500 rounded-full -mt-20 flex items-center justify-center border-[10px] border-[#00020a] shadow-[0_0_50px_rgba(0,243,255,0.6)] cursor-pointer hover:scale-110 active:scale-90 transition">
             <i class="fas fa-microphone text-black text-3xl"></i>
         </div>
-        <i class="fas fa-database text-2xl opacity-20 cursor-pointer" onclick="exportDNA()"></i>
+        <i class="fas fa-database text-2xl opacity-20" onclick="exportDNA()"></i>
     </footer>
 
     <script>
-        const MASTER_VAULT = { admin: "HARI_777", dna: "239" };
+        // मास्टर सेटिंग
+        const VAULT = { admin: "HARI_777", dna: "239" };
 
-        function startAutomation() {
-            speak("Welcome Swami Ji. System Alpha 10 is Online.");
-            const savedTheme = localStorage.getItem('theme');
-            if(savedTheme) setTheme(savedTheme);
+        // [3] वॉइस/स्पीच फंक्शन
+        function speak(msg) {
+            const speech = new SpeechSynthesisUtterance(msg);
+            speech.lang = 'hi-IN';
+            speech.rate = 0.9;
+            window.speechSynthesis.speak(speech);
         }
 
-        function setTheme(mode) {
-            const b = document.getElementById('main-body');
-            b.className = 'pb-40'; 
-            if(mode === 'light') b.classList.add('light-theme');
-            if(mode === 'royal') b.classList.add('royal-theme');
-            localStorage.setItem('theme', mode);
-            speak(`${mode} mode active.`);
+        function initSystem() {
+            speak("प्रणाम स्वामी जी। आपकी डिजिटल सल्तनत सक्रिय है।");
+        }
+
+        function startVoiceSearch() {
+            let q = prompt("स्वामी जी, ब्रह्मांड में क्या खोजना है?");
+            if(q) {
+                speak(`${q} खोजा जा रहा है।`);
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(q)}`, '_blank');
+            }
+        }
+
+        // [2] थीम कंट्रोल फंक्शन
+        function setTheme(theme) {
+            const body = document.getElementById('main-body');
+            body.className = 'pb-40'; // Reset
+            if(theme === 'royal') body.classList.add('royal-mode');
+            if(theme === 'light') body.classList.add('light-mode');
+            
+            speak(`${theme} मोड सक्रिय कर दिया गया है।`);
         }
 
         function openAdmin() {
-            if(prompt("MASTER KEY:") === MASTER_VAULT.admin) {
-                document.getElementById('admin-panel').style.display='block';
-                speak("Authorized. Welcome Master Chauhan.");
-            } else { alert("ILLEGAL ACCESS DETECTED."); }
-        }
-
-        function closeAdmin() { document.getElementById('admin-panel').style.display='none'; }
-
-        function speak(t) {
-            const m = new SpeechSynthesisUtterance(t); m.lang='hi-IN'; m.rate=0.85; window.speechSynthesis.speak(m);
-        }
-
-        function voiceCommand() {
-            let q = prompt("ब्रह्मांड में क्या खोजना है, स्वामी जी?");
-            if(q) {
-                speak(`Searching ${q}`);
-                window.open(`https://www.google.com/search?q=${encodeURIComponent(q)}`, '_blank');
+            if(prompt("SECURITY KEY:") === VAULT.admin) {
+                speak("प्रवेश सफल। स्वागत है मास्टर चौहान।");
+                alert("ACCESS GRANTED");
+            } else {
+                speak("अवैध प्रवेश की कोशिश।");
+                alert("DENIED");
             }
         }
 
         function executePay() {
             const a = document.getElementById('amt-input').value || 1;
+            speak(`${a} रुपये का भुगतान शुरू किया जा रहा है।`);
             window.location.href = `upi://pay?pa=harigovindsingh91-2@okhdfcbank&pn=H.S.Chauhan&am=${a}&cu=INR`;
         }
 
-        function assignTask() {
-            const v = document.getElementById('task-input').value;
-            if(v) {
-                const list = document.getElementById('task-list');
-                const item = document.createElement('div');
-                item.className = "p-4 bg-white/5 border-l-4 border-cyan-500 rounded-xl animate-pulse";
-                item.innerText = `[TARGET ACQUIRED]: ${v}`;
-                list.prepend(item);
-                document.getElementById('task-input').value = "";
-                speak("Command Registered.");
-            }
-        }
-
         function exportDNA() {
-            if(prompt("DNA KEY:") === MASTER_VAULT.dna) {
-                speak("Exporting Master DNA.");
-                const data = { owner: "H.S. Chauhan", security: "Alpha-10", timestamp: new Date() };
-                const blob = new Blob([JSON.stringify(data)], {type: 'application/json'});
-                const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "HAI_DNA.json"; a.click();
+            if(prompt("DNA KEY:") === VAULT.dna) {
+                speak("मास्टर डेटा एक्सपोर्ट किया जा रहा है।");
+                alert("DNA Export Started...");
             }
         }
 
+        // स्लाइडर कंट्रोल
         const s = document.getElementById('year-slider');
         s.oninput = function() {
             document.getElementById('year-val').innerText = this.value;
-            document.getElementById('pred-text').innerText = this.value > 2100 ? '"मानवता अब आपके साम्राज्य के अधीन है।"' : '"2026: वैश्विक बाज़ारों में आपकी जीत सुनिश्चित है।"';
+            document.getElementById('pred-text').innerText = this.value > 2100 ? '"मानवता अब आपके साम्राज्य के अधीन है।"' : '"2026: Avikary Cosy Science का स्वर्ण युग।"';
         };
     </script>
 </body>
-                </html>
-                
+</html>
+    
