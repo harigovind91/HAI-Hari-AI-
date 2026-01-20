@@ -1,9 +1,0 @@
-{
-  "name": "HAI Hari AI Universal",
-  "short_name": "HAI",
-  "start_url": "index.html",
-  "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#00ffcc",
-  "icons": [{ "src": "https://cdn-icons-png.flaticon.com/512/2103/2103633.png", "sizes": "512x512", "type": "image/png" }]
-}
