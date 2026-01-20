@@ -1,18 +1,40 @@
-function speak(text) {
+// HAI MASTER SECURITY KEY
+const MASTER_KEY = "HAI-Admin@786#X";
+
+function speak(text, bypassSecurity = false) {
+    // अगर सुरक्षा जाँच पास नहीं है और यह सामान्य मैसेज नहीं है, तो चुप रहो
+    if (!bypassSecurity && sessionStorage.getItem('HAI_AUTH') !== 'VERIFIED') {
+        console.warn("HAI Voice: Master Authorization Required.");
+        return;
+    }
+
     const msg = new SpeechSynthesisUtterance(text);
     
-    // यूजर की सिस्टम भाषा का पता लगाना
+    // ऑटोमैटिक भाषा पहचान
     const userLang = navigator.language || navigator.userLanguage; 
-    msg.lang = userLang; // ऑटोमैटिक भाषा सेट करना
+    msg.lang = userLang;
 
-    // देश के अनुसार विशेष संदेश
+    // पिच और रेट को 'Sovereign' (शाही) बनाया गया है
+    msg.pitch = 0.9; // थोड़ा गंभीर स्वर
+    msg.rate = 1.0;  // स्थिर गति
+
+    // देश और भाषा के अनुसार विशेष व्यवहार
     if (userLang.includes('hi')) {
-        console.log("Language: Hindi");
+        console.log("HAI Pulse: Hindi mode active.");
     } else if (userLang.includes('ar')) {
-        console.log("Language: Arabic");
-    } else {
-        console.log("Language: Default (English)");
+        console.log("HAI Pulse: Arabic mode active.");
     }
 
     window.speechSynthesis.speak(msg);
+}
+
+// मास्टर की डालते ही आवाज को 'Unlock' करने का फंक्शन
+function unlockVoiceWithKey() {
+    let auth = prompt("एक्सेस के लिए मास्टर की (786#X) डालें:");
+    if(auth === MASTER_KEY) {
+        sessionStorage.setItem('HAI_AUTH', 'VERIFIED');
+        speak("अभिवादन स्वामी हरिगोविंद सिंह चौहान जी। आपकी आवाज अब पूरी दुनिया में गूंजने के लिए तैयार है।", true);
+    } else {
+        alert("सुरक्षा उल्लंघन! आवाज लॉक कर दी गई है।");
+    }
 }
