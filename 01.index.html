@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAI | 2026 Sovereign Gemini OS</title>
+    <title>HAI | Sovereign Super Computer & AI OS</title>
     <script src="https://cdn.tailwindcss.net"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -14,9 +14,19 @@
         .super-panel:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2); }
         .corporate-glow { border-color: var(--gold) !important; box-shadow: 0 0 25px rgba(255, 215, 0, 0.2); }
         .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+        .node-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+        /* Loader for Global Sync */
+        #sync-loader { transition: opacity 1s; }
     </style>
 </head>
 <body class="pb-40" onload="bootSystem()">
+
+    <div id="sync-loader" class="fixed inset-0 z-[60000] bg-black flex flex-col items-center justify-center">
+        <div class="w-24 h-24 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mb-6"></div>
+        <h2 class="font-['Orbitron'] text-cyan-400 tracking-[10px] animate-pulse">HAI SYNCING...</h2>
+        <p class="text-[8px] opacity-40 mt-4">WORLDWIDE REPOSITORY NODES CONNECTING</p>
+    </div>
 
     <div onclick="toggleGlobalPay()" class="fixed right-0 top-1/4 z-[5000] bg-gradient-to-l from-yellow-600 to-yellow-400 p-4 rounded-l-3xl shadow-2xl cursor-pointer hover:pl-10 transition-all group">
         <div class="flex flex-col items-center gap-2 text-black font-black">
@@ -29,19 +39,19 @@
         <div class="flex items-center gap-4">
             <div class="w-14 h-14 bg-white text-black flex items-center justify-center rounded-2xl font-black text-3xl shadow-[0_0_20px_white]">H</div>
             <div>
-                <h1 class="text-xs font-['Orbitron'] tracking-[4px] text-cyan-400">HAI SUPER AI</h1>
-                <p class="text-[8px] opacity-50 uppercase tracking-[2px]">Gemini 2026 Intelligent Edition</p>
+                <h1 class="text-xs font-['Orbitron'] tracking-[4px] text-cyan-400 uppercase">HAI SUPER AI</h1>
+                <p class="text-[8px] opacity-50 uppercase tracking-[2px] node-pulse">Sovereign Node: ONLINE</p>
             </div>
         </div>
         <div class="flex gap-5 text-2xl">
-            <i class="fas fa-microchip text-cyan-500 cursor-pointer" onclick="scanHardware()" title="Hardware Scan"></i>
+            <i class="fas fa-wallet text-yellow-500 cursor-pointer" onclick="toggleScreen('earning-hub')" title="My Wallet"></i>
             <i class="fas fa-fingerprint text-gold cursor-pointer" onclick="openMasterVault()" title="Admin Panel"></i>
         </div>
     </header>
 
-    <main class="pt-36 px-6 max-w-6xl mx-auto space-y-12">
-        <div id="trial-banner" class="w-full py-2 bg-gradient-to-r from-cyan-900/50 to-transparent border-l-4 border-cyan-500 px-4 text-[10px] tracking-widest">
-            30-DAY FREE TRIAL: ALL CHAT, NEWS, VIDEO & MEDIA ARE FREE.
+    <main class="pt-36 px-6 max-w-7xl mx-auto space-y-12">
+        <div class="w-full py-2 bg-gradient-to-r from-cyan-900/50 to-transparent border-l-4 border-cyan-500 px-4 text-[10px] tracking-widest uppercase">
+            Sovereign OS 2026: Worldwide Infrastructure Active • Global Repository Synced
         </div>
 
         <section class="super-panel p-8">
@@ -50,7 +60,7 @@
                     <label class="cursor-pointer text-cyan-400 hover:scale-110 transition"><i class="fas fa-paperclip text-2xl"></i><input type="file" class="hidden" onchange="uploadDoc(this)"></label>
                     <label class="cursor-pointer text-cyan-400 hover:scale-110 transition" onclick="startCamera()"><i class="fas fa-camera text-2xl"></i></label>
                 </div>
-                <input id="main-input" type="text" placeholder="HAI Gemini से कुछ भी कराएं..." class="flex-1 bg-transparent text-xl outline-none placeholder:opacity-20">
+                <input id="main-input" type="text" placeholder="HAI Super Computer से कुछ भी कराएं..." class="flex-1 bg-transparent text-xl outline-none placeholder:opacity-20 font-light">
                 <div class="flex gap-4 text-xl">
                     <i class="fas fa-phone-alt text-green-400 cursor-pointer" onclick="aiCall('Audio')"></i>
                     <i class="fas fa-video text-blue-400 cursor-pointer" onclick="aiCall('Video')"></i>
@@ -58,20 +68,24 @@
             </div>
         </section>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div onclick="openPortal('Engineering')" class="super-panel p-8 text-center cursor-pointer">
-                <i class="fas fa-drafting-pencil text-4xl mb-4 text-blue-400"></i>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <div onclick="openPortal('Engineering')" class="super-panel p-8 text-center cursor-pointer group">
+                <i class="fas fa-drafting-pencil text-4xl mb-4 text-blue-400 group-hover:scale-110 transition"></i>
                 <p class="text-[10px] font-black tracking-widest uppercase">Engineering</p>
             </div>
-            <div onclick="openPortal('Commerce')" class="super-panel p-8 text-center cursor-pointer">
-                <i class="fas fa-globe text-4xl mb-4 text-green-400"></i>
+            <div onclick="openPortal('Commerce')" class="super-panel p-8 text-center cursor-pointer group">
+                <i class="fas fa-globe text-4xl mb-4 text-green-400 group-hover:scale-110 transition"></i>
                 <p class="text-[10px] font-black tracking-widest uppercase">Commerce</p>
             </div>
-            <div onclick="openPortal('Media')" class="super-panel p-8 text-center cursor-pointer">
-                <i class="fas fa-play-circle text-4xl mb-4 text-red-400"></i>
-                <p class="text-[10px] font-black tracking-widest uppercase">Reel Maker</p>
+            <div onclick="openPortal('Media')" class="super-panel p-8 text-center cursor-pointer group">
+                <i class="fas fa-play-circle text-4xl mb-4 text-red-400 group-hover:scale-110 transition"></i>
+                <p class="text-[10px] font-black tracking-widest uppercase">Media/Reels</p>
             </div>
-            <div onclick="openPortal('Corporate')" class="super-panel p-8 text-center cursor-pointer corporate-glow border-2 border-yellow-500/30">
+            <div onclick="openPortal('Advice')" class="super-panel p-8 text-center cursor-pointer group">
+                <i class="fas fa-lightbulb text-4xl mb-4 text-purple-400 group-hover:scale-110 transition"></i>
+                <p class="text-[10px] font-black tracking-widest uppercase">Advice Hub</p>
+            </div>
+            <div onclick="openPortal('Corporate')" class="super-panel p-8 text-center cursor-pointer corporate-glow border-2 border-yellow-500/30 col-span-2 md:col-span-1">
                 <i class="fas fa-handshake text-4xl mb-4 text-yellow-500"></i>
                 <p class="text-[10px] font-black tracking-widest text-yellow-500 uppercase">Tie-up Node</p>
             </div>
@@ -80,24 +94,78 @@
 
     <div id="portal-screen" class="fixed inset-0 bg-[#00050a] z-[10000] hidden overflow-y-auto p-10">
         <div class="flex justify-between items-center mb-10 border-b border-white/10 pb-6">
-            <h2 id="portal-title" class="font-['Orbitron'] text-2xl text-cyan-400">HAI UNIVERSAL PORTAL</h2>
+            <div>
+                <h2 id="portal-title" class="font-['Orbitron'] text-2xl text-cyan-400">HAI PORTAL</h2>
+                <p class="text-[8px] opacity-40 uppercase tracking-[4px]">Sub-Directory Node Access</p>
+            </div>
             <i class="fas fa-times-circle text-4xl text-red-500 cursor-pointer" onclick="closePortal()"></i>
         </div>
         <div id="portal-content" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             </div>
     </div>
 
+    <div id="earning-hub" class="fixed inset-0 bg-black/95 z-[20000] hidden p-10 overflow-y-auto">
+        <div class="max-w-md mx-auto">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="font-['Orbitron'] text-yellow-500">USER REVENUE CENTER</h2>
+                <i class="fas fa-times text-2xl" onclick="toggleScreen('earning-hub')"></i>
+            </div>
+            <div class="super-panel p-10 text-center border-yellow-500/30">
+                <p class="text-[10px] opacity-40 uppercase tracking-widest mb-2">Total Balance</p>
+                <h3 class="text-5xl font-black">₹0.00</h3>
+                <button onclick="requestWithdraw()" class="mt-8 w-full bg-yellow-500 text-black py-4 rounded-3xl font-black text-[10px] tracking-widest">WITHDRAW MONEY</button>
+            </div>
+        </div>
+    </div>
+
     <footer class="fixed bottom-10 w-full flex justify-center z-[5000]">
-        <div id="mic-btn" onclick="startVoice()" class="w-24 h-24 bg-cyan-500 rounded-full flex items-center justify-center border-[12px] border-[#000814] shadow-[0_0_50px_rgba(0,243,255,0.4)] cursor-pointer">
-            <i class="fas fa-microphone text-black text-4xl"></i>
+        <div id="mic-btn" onclick="startVoice()" class="w-24 h-24 bg-cyan-500 rounded-full flex items-center justify-center border-[12px] border-[#000814] shadow-[0_0_50px_rgba(0,243,255,0.4)] cursor-pointer group">
+            <i class="fas fa-microphone text-black text-4xl group-hover:scale-110 transition"></i>
         </div>
     </footer>
 
     <script>
+        // OWNER DATA
+        const OWNER_UPI = "harigovindsingh91-2@okhdfcbank";
+        const OWNER_PAYPAL = "harigovindsingh91@gmail.com";
+        const GITHUB_REPO = "https://github.com/YourUsername/YourRepo"; // अपनी रिपोजिटरी यहाँ डालें
+
+        // INFRASTRUCTURE DATABASE
+        const HAI_DATA = {
+            "Engineering": [
+                { name: "Code Lab", icon: "fa-code" },
+                { name: "CAD Design", icon: "fa-ruler-combined" },
+                { name: "Blueprint AI", icon: "fa-project-diagram" },
+                { name: "Hardware Node", icon: "fa-microchip" }
+            ],
+            "Commerce": [
+                { name: "Global Pay", icon: "fa-globe" },
+                { name: "Tax Engine", icon: "fa-file-invoice-dollar" },
+                { name: "B2B Connect", icon: "fa-handshake" },
+                { name: "Stock Node", icon: "fa-chart-line" }
+            ],
+            "Media": [
+                { name: "Reel Maker", icon: "fa-film" },
+                { name: "Music Hub", icon: "fa-music" },
+                { name: "VFX Editor", icon: "fa-magic" },
+                { name: "Studio Sync", icon: "fa-microphone-lines" }
+            ],
+            "Advice": [
+                { name: "Legal Advice", icon: "fa-gavel" },
+                { name: "Financial Pro", icon: "fa-coins" },
+                { name: "Tech Expert", icon: "fa-headset" },
+                { name: "Health AI", icon: "fa-stethoscope" }
+            ]
+        };
+
         const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 
         function bootSystem() {
-            speak("Welcome. HAI Gemini Intelligent OS is live. 30-day free trial active.");
+            setTimeout(() => {
+                document.getElementById('sync-loader').style.opacity = '0';
+                setTimeout(() => document.getElementById('sync-loader').classList.add('hidden'), 1000);
+                speak("HAI Gemini Super Computer active. Global repository synced with worldwide nodes.");
+            }, 3000);
         }
 
         function speak(msg) {
@@ -108,70 +176,80 @@
         }
 
         function openPortal(sector) {
-            document.getElementById('portal-screen').classList.remove('hidden');
+            const screen = document.getElementById('portal-screen');
+            const content = document.getElementById('portal-content');
             document.getElementById('portal-title').innerText = `HAI ${sector.toUpperCase()} HUB`;
             
-            let content = '';
+            let html = '';
             if(sector === 'Corporate') {
-                content = `
-                    <div onclick="corporateSync('Google')" class="super-panel p-6 text-center border-b-4 border-blue-500 cursor-pointer">
-                        <i class="fab fa-google text-2xl mb-2 text-blue-500"></i>
-                        <p class="text-[9px] font-bold">GOOGLE TIE-UP</p>
-                    </div>
-                    <div onclick="corporateSync('Microsoft')" class="super-panel p-6 text-center border-b-4 border-cyan-400 cursor-pointer">
-                        <i class="fab fa-windows text-2xl mb-2 text-cyan-400"></i>
-                        <p class="text-[9px] font-bold">MICROSOFT SYNC</p>
-                    </div>
-                    <div onclick="corporateSync('Reliance')" class="super-panel p-6 text-center border-b-4 border-orange-500 cursor-pointer">
-                        <i class="fas fa-industry text-2xl mb-2 text-orange-500"></i>
-                        <p class="text-[9px] font-bold">RELIANCE/JIO</p>
-                    </div>
-                `;
-            } else {
-                for(let i=1; i<=12; i++) {
-                    content += `
-                        <div class="super-panel p-6 text-center hover:bg-cyan-500/10 cursor-pointer">
-                            <i class="fas fa-tools text-xl mb-3 text-cyan-400"></i>
-                            <p class="text-[9px] font-bold uppercase">${sector} TOOL ${i}</p>
+                html = `<div onclick="corporateSync('Google')" class="super-panel p-8 text-center border-b-4 border-blue-500 cursor-pointer">
+                            <i class="fab fa-google text-3xl mb-4 text-blue-500"></i><p class="text-[10px] font-black uppercase">GOOGLE TIE-UP</p>
+                        </div>
+                        <div onclick="corporateSync('Microsoft')" class="super-panel p-8 text-center border-b-4 border-cyan-400 cursor-pointer">
+                            <i class="fab fa-windows text-3xl mb-4 text-cyan-400"></i><p class="text-[10px] font-black uppercase">MICROSOFT SYNC</p>
                         </div>`;
-                }
+            } else {
+                const tools = HAI_DATA[sector] || [];
+                tools.forEach(tool => {
+                    html += `<div onclick="executeTool('${tool.name}')" class="super-panel p-8 text-center hover:bg-cyan-500/10 cursor-pointer transition">
+                                <i class="fas ${tool.icon} text-3xl mb-4 text-cyan-400"></i>
+                                <p class="text-[10px] font-black tracking-widest uppercase">${tool.name}</p>
+                            </div>`;
+                });
             }
-            document.getElementById('portal-content').innerHTML = content;
-            speak(`Opening ${sector} portal with advanced tools.`);
+            content.innerHTML = html;
+            screen.classList.remove('hidden');
+            speak(`Opening ${sector} node folders.`);
         }
 
         function closePortal() { document.getElementById('portal-screen').classList.add('hidden'); }
+        function toggleScreen(id) { document.getElementById(id).classList.toggle('hidden'); }
+
+        function executeTool(name) {
+            speak(`${name} टूल सक्रिय हो रहा है।`);
+            alert(`HAI SUPER COMPUTER: Executing Protocol for ${name}...`);
+        }
 
         function corporateSync(name) {
-            speak(`${name} के साथ प्रपोजल और डेटा सिंक प्रक्रिया शुरू हो रही है।`);
-            alert(`SOVEREIGN PROTOCOL: Syncing Official Nodes with ${name}...`);
+            speak(`${name} के साथ आधिकारिक डेटा सिंक शुरू हो रहा है।`);
+            alert(`Sovereign Protocol: Authenticating with ${name} API Nodes...`);
         }
 
         function startVoice() {
             recognition.start();
             document.getElementById('mic-btn').classList.add('animate-pulse');
+            speak("सुन रहा हूँ...");
         }
 
         recognition.onresult = (e) => {
-            const cmd = e.results[0][0].transcript;
+            const cmd = e.results[0][0].transcript.toLowerCase();
             document.getElementById('mic-btn').classList.remove('animate-pulse');
-            speak(`Analyzing Command: ${cmd}`);
             if(cmd.includes("इंजीनियरिंग")) openPortal('Engineering');
-            else if(cmd.includes("कॉर्पोरेट")) openPortal('Corporate');
-            else window.open(`https://www.google.com/search?q=${cmd}`, '_blank');
+            else if(cmd.includes("पैसा") || cmd.includes("earning")) toggleScreen('earning-hub');
+            else {
+                speak(`Analyzing command: ${cmd}`);
+                window.open(`https://www.google.com/search?q=${cmd}`, '_blank');
+            }
         };
 
-        function scanHardware() {
-            speak("Scanning hardware. Memory, CPU, and Battery status optimized for HAI.");
-            alert("HARDWARE STATUS: \n- CPU: Sovereign Mode\n- RAM: HAI Optimized\n- Battery: Cloud Powered");
+        function toggleGlobalPay() {
+            const price = 999;
+            speak("Initiating Secure Owner Gateway.");
+            const method = confirm("Pay via UPI (OK) or PayPal (Cancel)?");
+            if(method) window.location.href = `upi://pay?pa=${OWNER_UPI}&pn=HAI%20HARI%20AI&am=${price}&cu=INR`;
+            else window.open(`https://www.paypal.com/paypalme/${OWNER_PAYPAL.split('@')[0]}/${price}`, '_blank');
         }
 
-        function uploadDoc() { speak("Document received. Gemini AI is analyzing the data."); }
-        function startCamera() { speak("Vision sensor active. Analyzing surroundings."); }
-        function aiCall(type) { speak(`Sovereign ${type} call initiated. Multi-language bridge active.`); }
-        function toggleGlobalPay() { speak("Opening HAI Global Pay. Secure gateway active."); alert("HAI GLOBAL PAY: Secure Node HS-CHAUHAN-239"); }
-        function openMasterVault() { if(prompt("MASTER KEY:") === "HARI_777") alert("Access Granted. Corporate Admin Dashboard Live."); }
+        function openMasterVault() {
+            if(prompt("MASTER SECURITY KEY:") === "HARI_777") alert("Access Granted. Administrator Mode Live.");
+            else speak("Security protocol failed.");
+        }
+
+        function requestWithdraw() { alert("Minimum settlement: ₹500. Insufficient funds."); }
+        function uploadDoc() { speak("Document analysis in progress."); }
+        function startCamera() { speak("Camera Vision sensor active."); }
+        function aiCall(type) { speak(`${type} call bridge initiated via HAI Node.`); }
     </script>
 </body>
 </html>
-            
+    
