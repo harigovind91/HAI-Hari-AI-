@@ -3,61 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAI Sovereign OS - LIVE</title>
+    <title>HAI Global Zone - Dashboard</title>
     <style>
-        :root { --gold: #ffd700; --bg: #0a0a0a; --accent: #e94560; }
-        body { background-color: var(--bg); color: white; font-family: sans-serif; text-align: center; margin: 0; }
-        .hero { padding: 50px 20px; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/random/1600x900/?galaxy'); background-size: cover; border-bottom: 3px solid var(--gold); }
-        .sun-icon { font-size: 60px; margin-bottom: 10px; }
-        .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; padding: 40px; }
-        .card { background: #1a1a1a; padding: 25px; border-radius: 15px; border: 1px solid #333; transition: 0.3s; cursor: pointer; }
-        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .card i { font-size: 40px; color: var(--gold); }
-        .btn-master { background: var(--gold); color: black; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 20px; }
-        footer { padding: 20px; font-size: 12px; color: #666; }
+        body { background: #000; color: #ffd700; font-family: 'Segoe UI', Arial, sans-serif; text-align: center; margin: 0; }
+        .header { padding: 60px 20px; border-bottom: 3px solid #ffd700; background: linear-gradient(to bottom, #111, #000); }
+        .sun { font-size: 80px; text-shadow: 0 0 30px #ffcc00; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px; }
+        .card { background: #111; border: 1px solid #333; padding: 25px; width: 280px; border-radius: 15px; transition: 0.3s; }
+        .card:hover { border-color: #ffd700; background: #1a1a1a; box-shadow: 0 0 15px rgba(255,215,0,0.2); }
+        .btn { background: #ffd700; color: #000; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px; width: 100%; font-size: 16px; }
+        footer { padding: 50px; color: #555; font-size: 13px; border-top: 1px solid #222; }
     </style>
 </head>
 <body>
 
-<div class="hero">
-    <div class="sun-icon">☀️</div>
-    <h1>HAI (Hari AI) GLOBAL ZONE</h1>
-    <p>लखनऊ से वैश्विक साम्राज्य का संचालन | कभी रात नहीं होती</p>
-    <a href="#" class="btn-master" onclick="login()">ADMIN LOGIN</a>
-</div>
-
-<div class="nav-grid">
-    <div class="card" onclick="alert('थिएटर मोड सक्रिय हो रहा है...')">
-        <div style="font-size:40px;">🎭</div>
-        <h3>Global Theatre</h3>
-        <p>कला और संस्कृति का केंद्र</p>
+    <div class="header">
+        <div class="sun">☀️</div>
+        <h1>HAI (Hari AI) GLOBAL ZONE</h1>
+        <p style="color: #fff; letter-spacing: 1px;">संचालन केंद्र: लखनऊ (सक्रिय 24/7)</p>
     </div>
-    <div class="card" onclick="alert('नागरिक सेवाएं जल्द आ रही हैं')">
-        <div style="font-size:40px;">🏛️</div>
-        <h3>Citizenship</h3>
-        <p>साम्राज्य से जुड़ें</p>
-    </div>
-    <div class="card" onclick="alert('सुरक्षा कवच सक्रिय है')">
-        <div style="font-size:40px;">🛡️</div>
-        <h3>Security</h3>
-        <p>Level-10-Alpha सुरक्षा</p>
-    </div>
-</div>
 
-<footer>
-    © 2026 H.S. Chauhan | HAI Sovereign OS | Powered by Global Zone Technology
-</footer>
+    <div class="grid">
+        <div class="card">
+            <div style="font-size: 40px;">🎭</div>
+            <h3>ग्लोबल थिएटर</h3>
+            <p style="color: #bbb;">लाइव कला और वैश्विक सांस्कृतिक मंच का प्रबंधन करें।</p>
+            <button class="btn" onclick="auth('Global Theatre')">सिस्टम सक्रिय करें</button>
+        </div>
+        
+        <div class="card">
+            <div style="font-size: 40px;">🛡️</div>
+            <h3>सुरक्षा कवच</h3>
+            <p style="color: #bbb;">Alpha-10 सुरक्षा प्रोटोकॉल और मास्टर की जांच।</p>
+            <button class="btn" onclick="auth('Security Shield')">स्कैन चलाएं</button>
+        </div>
 
-<script>
-    function login() {
-        let key = prompt("अपनी Master Security Key दर्ज करें:");
-        if(key === "HARI_ADMIN_2026") {
-            alert("प्रणाम स्वामी जी! डैशबोर्ड अनलॉक हो गया है।");
-        } else {
-            alert("अवैध प्रयास! सुरक्षा टीम को सूचित कर दिया गया है।");
+        <div class="card">
+            <div style="font-size: 40px;">🏛️</div>
+            <h3>नागरिक सेवाएं</h3>
+            <p style="color: #bbb;">साम्राज्य की सदस्यता और नागरिक डेटा का प्रबंधन।</p>
+            <button class="btn" onclick="auth('Citizen Services')">डेटा एक्सेस करें</button>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Avikary Cosy Science Private Limited | H.S. Chauhan | HAI Sovereign OS
+    </footer>
+
+    <script>
+        function auth(sysName) {
+            const key = prompt(sysName + " एक्सेस करने के लिए अपनी 'Master Security Key' दर्ज करें:");
+            if(key === "HARI_ADMIN_2026") {
+                alert("प्रणाम स्वामी जी! " + sysName + " मोड सफलतापूर्वक सक्रिय हो गया है।");
+            } else if (key) {
+                alert("सुरक्षा चेतावनी: अवैध प्रवेश का प्रयास! आपका IP ट्रैक किया जा रहा है।");
+            }
         }
-    }
-</script>
-
+    </script>
 </body>
 </html>
