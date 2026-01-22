@@ -2,154 +2,65 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HAI Sovereign OS | Final Global Build</title>
-    <script src="https://cdn.tailwindcss.net"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAI Global Zone - Operational Dashboard</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;600;900&display=swap');
-        :root { --hai-cyan: #00f3ff; --gold: #ffd700; --bg: #000208; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #fff; overflow: hidden; height: 100vh; margin: 0; }
-        .heavenly-glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(40px); border: 1px solid rgba(0, 243, 255, 0.1); border-radius: 30px; }
-        .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 20px; padding: 25px; height: 60vh; overflow-y: auto; scrollbar-width: none; }
-        .icon-box { width: 65px; height: 65px; background: rgba(255,255,255,0.03); border: 1px solid rgba(0,243,255,0.2); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 28px; transition: 0.3s; }
-        .location-tag { font-size: 8px; font-weight: 900; color: var(--gold); background: rgba(255,215,0,0.1); padding: 4px 10px; border-radius: 20px; letter-spacing: 2px; }
-        .pay-btn { width: 65px; height: 65px; background: linear-gradient(135deg, #ffd700, #b8860b); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #000; box-shadow: 0 0 30px rgba(255,215,0,0.2); }
+        body { background: #000; color: #ffd700; font-family: 'Segoe UI', Arial, sans-serif; text-align: center; margin: 0; }
+        .header { padding: 60px 20px; border-bottom: 3px solid #ffd700; background: linear-gradient(to bottom, #111, #000); }
+        .sun { font-size: 80px; text-shadow: 0 0 30px #ffcc00; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px; }
+        .card { background: #111; border: 1px solid #333; padding: 25px; width: 280px; border-radius: 15px; transition: 0.3s; }
+        .card:hover { border-color: #ffd700; background: #1a1a1a; box-shadow: 0 0 15px rgba(255,215,0,0.2); }
+        .btn { background: #ffd700; color: #000; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px; width: 100%; font-size: 16px; }
+        footer { padding: 50px; color: #555; font-size: 13px; border-top: 1px solid #222; }
     </style>
 </head>
-<body onload="HAIFinal.boot()">
+<body>
 
-    <div id="auth-layer" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center p-6 text-center">
-        <div class="heavenly-glass p-10 space-y-8 w-full max-w-sm border-cyan-400/30">
-            <h1 class="font-['Orbitron'] text-5xl text-cyan-400 tracking-[10px]">HAI</h1>
-            <input type="password" id="m-key" placeholder="Enter Sovereign Key" class="w-full p-4 bg-white/5 border border-cyan-400/20 rounded-2xl text-center outline-none focus:border-cyan-400 font-['Orbitron']">
-            <button onclick="HAIFinal.unlock()" class="w-full bg-cyan-400 text-black font-black py-4 rounded-2xl uppercase text-[10px] tracking-[3px]">Access World Terminal</button>
-            <p class="text-[7px] opacity-20 uppercase tracking-[3px]">Avikary Cosy Science Pvt Ltd</p>
+    <div class="header">
+        <div class="sun">☀️</div>
+        <h1>HAI (Hari AI) GLOBAL ZONE</h1>
+        <p style="color: #fff; letter-spacing: 1px;">संचालन केंद्र: लखनऊ (सक्रिय 24/7)</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div style="font-size: 40px;">🎭</div>
+            <h3>ग्लोबल थिएटर</h3>
+            <p style="color: #bbb;">लाइव कला और वैश्विक सांस्कृतिक मंच का प्रबंधन करें।</p>
+            <button class="btn" onclick="auth('Global Theatre')">सिस्टम सक्रिय करें</button>
+        </div>
+        
+        <div class="card">
+            <div style="font-size: 40px;">🛡️</div>
+            <h3>सुरक्षा कवच</h3>
+            <p style="color: #bbb;">Alpha-10 सुरक्षा प्रोटोकॉल और मास्टर की जांच।</p>
+            <button class="btn" onclick="auth('Security Shield')">स्कैन चलाएं</button>
+        </div>
+
+        <div class="card">
+            <div style="font-size: 40px;">🏛️</div>
+            <h3>नागरिक सेवाएं</h3>
+            <p style="color: #bbb;">साम्राज्य की सदस्यता और नागरिक डेटा का प्रबंधन।</p>
+            <button class="btn" onclick="auth('Citizen Services')">डेटा एक्सेस करें</button>
         </div>
     </div>
 
-    <div id="os-layer" class="hidden h-screen flex flex-col">
-        <header class="h-24 flex flex-col justify-center px-8 border-b border-white/5 bg-black/40">
-            <div class="flex justify-between items-center w-full">
-                <div class="font-['Orbitron'] text-xs tracking-[4px]">HAI <span class="text-cyan-400">GLOBAL</span></div>
-                <div id="geo-display" class="location-tag">TRACKING ACTIVE...</div>
-            </div>
-            <div class="flex justify-between mt-2">
-                <span id="trial-info" class="text-[7px] text-green-400 font-bold uppercase">SSL Secured | No-Server Architecture</span>
-                <span id="lang-info" class="text-[7px] text-cyan-400 font-bold uppercase">Neural Link: Hindi</span>
-            </div>
-        </header>
-
-        <main class="app-grid" id="desktop"></main>
-
-        <div class="fixed bottom-28 left-8 flex flex-col items-center gap-4">
-            <div onclick="HAIFinal.openGlobalPay()" class="pay-btn hover:scale-110 transition cursor-pointer">
-                <i class="fas fa-file-invoice-dollar"></i>
-            </div>
-            <p class="text-[7px] font-black tracking-widest text-gold uppercase">Global Pay</p>
-        </div>
-
-        <div class="fixed bottom-28 right-8 flex flex-col items-center gap-4">
-            <div onclick="HAIFinal.aiSpeak()" class="w-16 h-16 bg-cyan-400 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(0,243,255,0.4)] cursor-pointer">
-                <i class="fas fa-robot text-black text-2xl"></i>
-            </div>
-            <p class="text-[7px] font-black tracking-widest text-cyan-400 uppercase">HAI AI</p>
-        </div>
-
-        <nav class="h-20 bg-black/90 border-t border-white/10 flex justify-around items-center">
-            <i class="fas fa-globe-americas text-xl opacity-40 hover:text-cyan-400" onclick="HAIFinal.toggleMap()"></i>
-            <i class="fas fa-th-large text-xl opacity-40 hover:text-cyan-400" onclick="HAIFinal.render()"></i>
-            <i class="fas fa-cog text-xl opacity-40 hover:text-cyan-400" onclick="HAIFinal.adminControl()"></i>
-        </nav>
-    </div>
-
-    <div id="pay-modal" class="fixed inset-0 z-[11000] bg-black/98 hidden flex items-center justify-center p-6">
-        <div class="heavenly-glass p-8 w-full max-w-sm text-center space-y-6">
-            <h2 class="font-['Orbitron'] text-gold">HAI GLOBAL PAY</h2>
-            <input type="number" id="pay-amt" placeholder="Enter Amount" class="w-full p-4 bg-white/5 border border-gold/20 rounded-2xl text-center outline-none text-white text-xl">
-            <button onclick="HAIFinal.processPay('UPI')" class="w-full bg-white text-black py-4 rounded-xl font-bold uppercase text-[10px]">UPI Payment</button>
-            <button onclick="HAIFinal.processPay('PayPal')" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold uppercase text-[10px]">PayPal Global</button>
-            <button onclick="HAIFinal.closePay()" class="text-[8px] opacity-30">CANCEL</button>
-        </div>
-    </div>
+    <footer>
+        © 2026 Avikary Cosy Science Private Limited | H.S. Chauhan | HAI Sovereign OS
+    </footer>
 
     <script>
-        const HAIFinal = {
-            config: { mKey: "HARI_777", upi: "harigovindsingh91-2@okhdfcbank", email: "harigovindsingh91@gmail.com" },
-            lang: 'hi-IN',
-
-            boot: function() { this.track(); },
-
-            track: function() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(p => {
-                        document.getElementById('geo-display').innerText = `LAT: ${p.coords.latitude.toFixed(2)} | LON: ${p.coords.longitude.toFixed(2)} | ACTIVE`;
-                    }, () => { document.getElementById('geo-display').innerText = "GEO-STEALTH ACTIVE"; });
-                }
-            },
-
-            unlock: function() {
-                const k = document.getElementById('m-key').value;
-                if(k === this.config.mKey || k === "HAI-Admin@786#X") {
-                    document.getElementById('auth-layer').style.display = 'none';
-                    document.getElementById('os-layer').style.display = 'flex';
-                    this.render();
-                    this.speak("नमस्ते स्वामी जी, आपका ग्लोबल साम्राज्य सक्रिय है।");
-                } else { alert("ACCESS DENIED"); }
-            },
-
-            render: function() {
-                const sectors = ['Social', 'Mart', 'Creative', 'Engineering', 'Space', 'Education', 'Dating', 'Legal'];
-                const icons = ['fa-share-nodes', 'fa-shop', 'fa-paint-brush', 'fa-microchip', 'fa-rocket', 'fa-graduation-cap', 'fa-heart', 'fa-gavel'];
-                const d = document.getElementById('desktop'); d.innerHTML = '';
-                sectors.forEach((s, i) => {
-                    d.innerHTML += `<div class="app-icon flex flex-col items-center" onclick="HAIFinal.speak('${s} Folder Active')">
-                        <div class="icon-box"><i class="fas ${icons[i]}"></i></div>
-                        <span class="text-[8px] font-bold mt-2 opacity-50 uppercase tracking-widest">${s}</span>
-                    </div>`;
-                });
-            },
-
-            openGlobalPay: function() { document.getElementById('pay-modal').style.display = 'flex'; this.speak("ग्लोबल पे सक्रिय है।"); },
-            closePay: function() { document.getElementById('pay-modal').style.display = 'none'; },
-            
-            processPay: function(m) {
-                const a = document.getElementById('pay-amt').value || "0";
-                this.speak(`${a} Received via ${m}`);
-                this.genBill(a, m);
-                this.closePay();
-            },
-
-            genBill: function(a, m) {
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
-                doc.text("HAI GLOBAL PAY RECEIPT", 20, 20);
-                doc.text(`Merchant: Avikary Cosy Science Pvt Ltd`, 20, 30);
-                doc.text(`Amount: ${a} | Method: ${m}`, 20, 40);
-                doc.text(`Status: VERIFIED BY HAI ROBOTIC AI`, 20, 50);
-                doc.save("HAI_Global_Receipt.pdf");
-            },
-
-            aiSpeak: function() { this.speak("स्वामी जी, मैं आपके स्थान और वैश्विक व्यापार को नियंत्रित कर रहा हूँ।"); },
-            
-            adminControl: function() {
-                const n = prompt("Change Global Repository Password:");
-                if(n) { this.config.mKey = n; this.speak("Password Synced Globally."); }
-            },
-
-            speak: function(m, l = this.lang) {
-                window.speechSynthesis.cancel();
-                const u = new SpeechSynthesisUtterance(m); u.lang = l;
-                window.speechSynthesis.speak(u);
-            },
-
-            toggleMap: function() {
-                const c = prompt("Set Neural Language (hi-IN, en-US, ar-SA, ja-JP):", this.lang);
-                if(c) { this.lang = c; document.getElementById('lang-info').innerText = `Neural Link: ${c}`; this.speak("Language Synced", c); }
+        function auth(sysName) {
+            const key = prompt(sysName + " एक्सेस करने के लिए अपनी 'Master Security Key' दर्ज करें:");
+            if(key === "HARI_ADMIN_2026") {
+                alert("प्रणाम स्वामी जी! " + sysName + " मोड सफलतापूर्वक सक्रिय हो गया है।");
+            } else if (key) {
+                alert("सुरक्षा चेतावनी: अवैध प्रवेश का प्रयास! आपका IP ट्रैक किया जा रहा है।");
             }
-        };
+        }
     </script>
 </body>
-</html>
-
+    </html>
+        
