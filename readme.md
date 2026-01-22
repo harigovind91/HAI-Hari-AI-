@@ -3,74 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAI Global Zone | Control Hub</title>
+    <title>HAI (Hari AI) | Sovereign Millennium OS</title>
     <style>
-        * { box-sizing: border-box; }
-        body { background: #050505; color: #ffd700; font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
-        
-        /* शाही हेडर */
-        .header { padding: 60px 20px; border-bottom: 3px solid #ffd700; background: linear-gradient(to bottom, #111, #000); }
-        .sun-aura { font-size: 80px; text-shadow: 0 0 30px #ffaa00; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        
-        /* कंट्रोल ग्रिड */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 40px; max-width: 1200px; margin: auto; }
-        .card { background: #111; border: 1px solid #333; padding: 30px; border-radius: 20px; transition: 0.3s; position: relative; }
-        .card:hover { border-color: #ffd700; background: #1a1a1a; transform: translateY(-10px); }
-        
-        /* बटन स्टाइल */
-        .btn { background: #ffd700; color: #000; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 20px; font-size: 16px; }
-        .btn:active { transform: scale(0.98); }
-
-        /* सिस्टम लॉग */
-        .log { background: #000; color: #0f0; font-family: monospace; padding: 10px; border-radius: 5px; font-size: 12px; height: 60px; overflow: hidden; margin-top: 15px; text-align: left; }
+        body { background-color: #ffffff; color: #333; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; line-height: 1.6; }
+        .admin-link { float: right; text-decoration: none; color: #eee; font-size: 10px; } /* लगभग अदृश्य बटन */
+        header { border-bottom: 2px solid #0056b3; padding-bottom: 10px; margin-bottom: 20px; }
+        h1 { color: #0056b3; font-size: 24px; }
+        h2 { color: #2c3e50; border-left: 5px solid #0056b3; padding-left: 10px; margin-top: 30px; }
+        .badge { background: #f0f4f8; border: 1px solid #d1d9e6; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-right: 5px; }
+        footer { margin-top: 50px; padding: 20px; border-top: 1px solid #eee; font-size: 12px; color: #888; text-align: center; }
     </style>
 </head>
 <body>
+    <a href="admin.html" class="admin-link">Admin Login</a>
+    <header>
+        <h1>🏛️ HAI (Hari AI) | Sovereign Millennium OS</h1>
+        <div><span class="badge">Stability: Active</span><span class="badge">Owner: H.S. Chauhan</span></div>
+    </header>
 
-    <div class="header">
-        <div class="sun-aura">☀️</div>
-        <h1>HAI (Hari AI) SOVEREIGN OS</h1>
-        <p style="color: #888;">लखनऊ मास्टर हब | वैश्विक संचालन केंद्र</p>
-    </div>
+    <section>
+        <p><strong>HAI (Hari AI)</strong> एक 1000 वर्ष तक चलने वाला संप्रभु न्यूरल इंजन है।</p>
+        <h2>🌐 विजन (The Vision)</h2>
+        <p>स्वामी हरिगोविंद सिंह चौहान के नेतृत्व में विकसित यह सिस्टम वैश्विक तकनीकी नोड्स को एक सुरक्षित 'Command Center' में जोड़ता है।</p>
+        <h2>🚀 मुख्य क्षमताएं</h2>
+        <p>• RSA-4096 Security • Satellite Command • Neural Injection</p>
+    </section>
 
-    <div class="grid">
-        <div class="card">
-            <h2>🎭 ग्लोबल थिएटर</h2>
-            <p>लाइव कला और सांस्कृतिक प्रबंधन</p>
-            <div class="log">> System: Ready<br>> Port: 8080 Active</div>
-            <button class="btn" onclick="masterKey('Theater')">एक्सेस करें</button>
-        </div>
-
-        <div class="card">
-            <h2>🛡️ सुरक्षा कवच</h2>
-            <p>Alpha-10 सुरक्षा ऑडिट</p>
-            <div class="log">> Firewall: Protected<br>> Scan: 100% Secure</div>
-            <button class="btn" onclick="masterKey('Security')">स्कैन चलाएं</button>
-        </div>
-
-        <div class="card">
-            <h2>🏛️ नागरिक कोर</h2>
-            <p>वैश्विक नागरिक डेटाबेस</p>
-            <div class="log">> Encrypted: AES-256<br>> Waiting for Key...</div>
-            <button class="btn" onclick="masterKey('Citizen')">डेटा खोलें</button>
-        </div>
-    </div>
-
-    <footer style="padding: 50px; color: #444; font-size: 14px;">
-        © 2026 Avikary Cosy Science Private Limited<br>
-        प्रशासक: स्वामी हरिगोविंद सिंह चौहान
-    </footer>
-
-    <script>
-        function masterKey(sys) {
-            let key = prompt(sys + " के लिए Master Security Key दर्ज करें:");
-            if(key === "HARI_ADMIN_2026") {
-                alert("प्रणाम स्वामी जी! " + sys + " पोर्टल अनलॉक हो गया है।");
-            } else if(key) {
-                alert("अवैध प्रयास! सुरक्षा उल्लंघन दर्ज कर लिया गया है।");
-            }
-        }
-    </script>
+    <footer>© 2026 Avikary Cosy Science | Directed by H.S. Chauhan</footer>
 </body>
 </html>
