@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAI Sovereign OS | v99 Master Dashboard</title>
+    <style>
+        :root { --v99-gold: #ffd700; --v99-bg: #0a0a0a; }
+        body { background: var(--v99-bg); color: var(--v99-gold); font-family: 'Segoe UI', Arial; margin: 0; transition: 0.5s; }
+        
+        .header { background: #111; padding: 20px; border-bottom: 3px solid var(--v99-gold); text-align: center; }
+        .v99-tag { background: var(--v99-gold); color: #000; padding: 2px 10px; border-radius: 5px; font-weight: bold; font-size: 14px; }
+
+        .settings-panel { background: #1a1a1a; padding: 15px; margin: 20px; border-radius: 10px; border: 1px dashed var(--v99-gold); }
+        .color-btn { width: 35px; height: 35px; border-radius: 50%; border: 2px solid #fff; cursor: pointer; display: inline-block; margin: 5px; }
+
+        .api-input { background: #222; border: 1px solid var(--v99-gold); color: #fff; padding: 10px; width: 80%; border-radius: 5px; margin-top: 10px; }
+        
+        .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px; }
+        .card { background: #161616; border: 1px solid #333; padding: 20px; border-radius: 12px; }
+        .btn { background: var(--v99-gold); color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; width: 100%; border-radius: 5px; }
+
+        footer { text-align: center; padding: 30px; font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🔱 HAI (Hari AI) <span class="v99-tag">v99</span></h1>
+        <p>HARI GLOBAL STUDIO | Sovereign Control Center</p>
+    </div>
+
+    <div class="settings-panel">
+        <strong>🎨 डिस्प्ले सेटिंग्स:</strong>
+        <div class="color-btn" style="background: #000;" onclick="changeTheme('#000','#ffd700')"></div>
+        <div class="color-btn" style="background: #fff;" onclick="changeTheme('#fff','#333')"></div>
+        <div class="color-btn" style="background: #1a1a2e;" onclick="changeTheme('#1a1a2e','#fff')"></div>
+        <br><br>
+        <strong>🔑 API KEY (v99 Connection):</strong><br>
+        <input type="password" id="apiKey" class="api-input" placeholder="यहाँ अपनी API Key पेस्ट करें...">
+        <button onclick="saveKey()" style="padding: 10px;">सक्रिय करें</button>
+    </div>
+
+    <div class="module-grid">
+        <div class="card">
+            <h3>🛡️ सुरक्षा चक्र (Security)</h3>
+            <p>Level-10-Alpha Active</p>
+            <button class="btn" onclick="alert('Scanning Sovereign Nodes...')">SCAN SYSTEM</button>
+        </div>
+        <div class="card">
+            <h3>🌍 ग्लोबल थिएटर (Theater)</h3>
+            <p>Master Hub: Lucknow</p>
+            <button class="btn" onclick="alert('Theater Operations Online')">ENTER THEATER</button>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Avikary Cosy Science | Master: Swami Harigovind Singh Chauhan
+    </footer>
+
+    <script>
+        function changeTheme(bg, text) {
+            document.body.style.backgroundColor = bg;
+            document.body.style.color = text;
+        }
+
+        function saveKey() {
+            let key = document.getElementById('apiKey').value;
+            if(key) {
+                alert("Hari Global Studio v99: API Key सफलतापूर्वक सिंक हो गई है!");
+                // यहाँ हम API Key को ब्राउज़र की मेमोरी में सुरक्षित कर सकते हैं
+                localStorage.setItem('v99_key', key);
+            }
+        }
+    </script>
+</body>
+</html>
