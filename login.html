@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARI STUDIO | Secure Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #0a0e14;
+            color: #00f2ff;
+            font-family: 'Rajdhani', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .login-card {
+            background: #161b22;
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #30363d;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+        h2 { font-family: 'Orbitron'; font-size: 1.5rem; margin-bottom: 30px; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            color: white;
+            border-radius: 5px;
+            outline: none;
+            text-align: center;
+        }
+        input:focus { border-color: #00f2ff; box-shadow: 0 0 10px rgba(0, 242, 255, 0.3); }
+        .btn-access {
+            background: #00f2ff;
+            color: #0a0e14;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Orbitron';
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-access:hover { background: #ffffff; box-shadow: 0 0 15px #00f2ff; }
+        .security-note { font-size: 0.8rem; color: #8b949e; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <h2>HARI STUDIO v99</h2>
+        <p style="margin-bottom: 20px; color: #8b949e;">एडमिन पैनल एक्सेस</p>
+        <input type="password" id="masterKey" placeholder="Master Security Key">
+        <button class="btn-access" onclick="validateKey()">एक्सेस ग्रांट करें</button>
+        <p class="security-note">चेतावनी: यह क्षेत्र केवल अधिकृत शोधकर्ता के लिए है।</p>
+    </div>
+
+    <script>
+        function validateKey() {
+            const keyInput = document.getElementById('masterKey').value;
+            // आपकी मास्टर सिक्योरिटी की (यहाँ आप अपनी पसंद की की सेट कर सकते हैं)
+            const correctKey = "HARI_2026_SECURE"; 
+
+            if (keyInput === correctKey) {
+                alert("पहचान प्रमाणित! डैशबोर्ड लोड हो रहा है...");
+                window.location.href = "index.html"; // डैशबोर्ड पर भेजें
+            } else {
+                alert("एक्सेस डिनाइड! गलत सिक्योरिटी की।");
+            }
+        }
+    </script>
+</body>
+</html>
+
