@@ -1,59 +1,17 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harigovind Singh Chauhan | Global Research Hub</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; background: #f4f4f4; color: #333; }
-        header { background: #004d40; color: white; padding: 2rem 0; text-align: center; }
-        .container { width: 80%; margin: auto; overflow: hidden; padding: 20px; }
-        .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h1 { margin: 0; font-size: 2.5rem; }
-        h2 { color: #00796b; border-bottom: 2px solid #00796b; padding-bottom: 5px; }
-        .vision-text { font-style: italic; font-size: 1.2rem; text-align: center; color: #555; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        footer { text-align: center; padding: 20px; background: #333; color: white; margin-top: 20px; }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>हरिगोविंद सिंह चौहान</h1>
-    <p>30 वर्षों का गहन शोध | मानवता और तकनीकी नवाचार का संगम</p>
-</header>
-
-<div class="container">
-    <div class="card">
-        <p class="vision-text">"मेरा लक्ष्य धरती से आसमान तक एक सुंदर संसार बनाना और मानवता को हर खतरे से सुरक्षित करना है।"</p>
-    </div>
-
-    <h2>प्रमुख अनुसंधान क्षेत्र (Research Verticals)</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>🤖 उन्नत रोबोटिक्स</h3>
-            <p>मानव अस्तित्व को सरल बनाने और खतरनाक कार्यों के निवारण के लिए रोबोटिक समाधान।</p>
-        </div>
-        <div class="card">
-            <h3>🍏 खाद्य एवं औषधीय विकास</h3>
-            <p>जहर मुक्त भोजन और ऐसी दवाएं जो मानव जीवन को उच्च स्तर पर ले जाएं।</p>
-        </div>
-        <div class="card">
-            <h3>🌲 100 ट्रिलियन वृक्षारोपण</h3>
-            <p>वैश्विक पारिस्थितिकी तंत्र को पुनर्जीवित करने का महाभियान।</p>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2>वैश्विक मिशन</h2>
-        <p>30 साल के बहु-विषयक शोध के आधार पर, मैं उन्नत तकनीकों के माध्यम से दुनिया के सभी मतभेदों और समस्याओं को समाप्त करने के लिए समर्पित हूँ।</p>
-    </div>
-</div>
-
-<footer>
-    <p>© 2026 | Developed by HAI (Hari AI) for the Global Mission</p>
-</footer>
-
-</body>
-</html>
-
+1. 🤖 उन्नत रोबोटिक्स और सुरक्षा (Advanced Robotics & Safety)
+मानव जीवन को सरल बनाने और खतरों के निवारण हेतु AI और रोबोटिक प्रणालियों का विकास।
+2. 🍏 शुद्ध खाद्य एवं औषधि विज्ञान (Zero-Toxin Food & Pharma)
+बायोटेक्नोलॉजी और केमिकल रिसर्च के माध्यम से ज़हर-मुक्त भोजन और रोगों को जड़ से मिटाने वाली दवाओं का विकास।
+3. 🌲 100 ट्रिलियन वृक्षारोपण मिशन (Global Reforestation)
+पृथ्वी के पारिस्थितिक संतुलन को बहाल करने के लिए व्यापक वैज्ञानिक ब्लूप्रिंट।
+4. ⚡ बहु-विषयक इंजीनियरिंग (Multi-Disciplinary Expertise)
+Electrical, Mechanical, Automobile, और Infrastructure डिजाइन का एक ही मंच पर एकीकरण।
+🛠️ तकनीकी परिचय (Technical Identity)
+Lead Developer: Google Asia Pacific (Open Source)
+R&D Director: Avikary Cosy Science
+Research Experience: 30+ Years (Engineering, Biotech, Infrastructure & Design)
+📂 डेटा रिडेम्पशन (Data Redemption Archive)
+इस रिपॉजिटरी में शामिल है:
+index.html: ग्लोबल मिशन का डिजिटल इंटरफेस।
+metadata.json: 30 साल की रिसर्च फाइल्स का व्यवस्थित डेटाबेस।
+blueprints/: भविष्य की मशीनरी और तकनीकी नक्शे।
