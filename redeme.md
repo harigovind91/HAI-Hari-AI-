@@ -1,3 +1,7 @@
+
+The main objective of robotics is to protect the world 
+in a systematic and orderly manner.
+
 1. 🤖 उन्नत रोबोटिक्स और सुरक्षा (Advanced Robotics & Safety)
 मानव जीवन को सरल बनाने और खतरों के निवारण हेतु AI और रोबोटिक प्रणालियों का विकास।
 2. 🍏 शुद्ध खाद्य एवं औषधि विज्ञान (Zero-Toxin Food & Pharma)
