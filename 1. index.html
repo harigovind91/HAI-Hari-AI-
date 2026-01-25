@@ -1,29 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hari Global Studio v99 | Sovereign OS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script type="importmap">
-    {
-      "imports": {
-        "react": "https://esm.sh/react@19.0.0",
-        "react-dom": "https://esm.sh/react-dom@19.0.0/client",
-        "@google/genai": "https://esm.sh/@google/genai@1.38.0"
-      }
-    }
-    </script>
+    <title>Harigovind | Global Research Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; background-color: #000; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .bg-mesh { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; 
-            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
-            filter: blur(80px); }
+        :root {
+            --primary: #004d40;
+            --secondary: #00bfa5;
+            --dark: #121212;
+            --light: #f4f4f4;
+            --accent: #ffc107;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--light); color: var(--dark); overflow-x: hidden; }
+
+        /* Header & Hero Section */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 77, 64, 0.9), rgba(18, 18, 18, 0.9)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 { font-family: 'Orbitron', sans-serif; font-size: 3.5rem; letter-spacing: 5px; margin-bottom: 10px; color: var(--secondary); }
+        .tagline { font-size: 1.5rem; font-weight: 300; max-width: 800px; margin-bottom: 30px; }
+
+        /* Navigation */
+        nav { background: var(--primary); padding: 15px; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        nav a { color: white; text-decoration: none; margin: 0 20px; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: var(--accent); }
+
+        /* Sections */
+        .section { padding: 80px 20px; max-width: 1200px; margin: auto; }
+        h2 { font-family: 'Orbitron', sans-serif; text-align: center; margin-bottom: 50px; color: var(--primary); font-size: 2.2rem; }
+
+        /* Expertise Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.4s; border-bottom: 5px solid var(--secondary); }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.4rem; }
+
+        /* Redeemed Research Section */
+        .redeemed-box { background: var(--dark); color: white; padding: 40px; border-radius: 20px; text-align: center; margin-top: 50px; }
+        .redeemed-list { text-align: left; max-width: 600px; margin: 20px auto; }
+        .redeemed-item { border-left: 3px solid var(--accent); padding-left: 15px; margin-bottom: 15px; }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; text-align: center; padding: 50px 20px; }
+        .footer-logo { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: var(--secondary); margin-bottom: 20px; }
+        .btn { background: var(--secondary); color: white; padding: 15px 30px; border: none; border-radius: 50px; cursor: pointer; font-size: 1rem; text-decoration: none; transition: 0.3s; display: inline-block; margin-top: 20px; }
+        .btn:hover { background: var(--accent); color: var(--dark); }
+
     </style>
 </head>
 <body>
-    <div class="bg-mesh"></div>
-    <div id="root"></div>
-    <script type="module" src="index.tsx"></script>
+
+    <header>
+        <h1>HARIGOVIND</h1>
+        <p class="tagline">30 वर्षों की शोध तपस्या: इलेक्ट्रिकल, बायोटेक, और रोबोटिक्स के माध्यम से विश्व उत्थान का संकल्प।</p>
+        <a href="#research" class="btn">अनुसंधान देखें</a>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#research">Redeemed Files</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="expertise" class="section">
+        <h2>तकनीकी विशेषज्ञता (Areas of Mastery)</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>⚡ Engineering</h3>
+                <p>Electrical, Electronics, Mechanical, और Automobile इंजीनियरिंग में दशकों का व्यावहारिक अनुभव।</p>
+            </div>
+            <div class="card">
+                <h3>🧪 Life Sciences</h3>
+                <p>Biotechnology और Pharma शोध: ज़हर-मुक्त भोजन और उन्नत औषधीय प्रणालियों का विकास।</p>
+            </div>
+            <div class="card">
+                <h3>🤖 Robotics & AI</h3>
+                <p>मानवता की सुरक्षा और अस्तित्व के लिए उन्नत रोबोटिक्स और भविष्य की मशीनरी का निर्माण।</p>
+            </div>
+            <div class="card">
+                <h3>🌍 Climate Mission</h3>
+                <p>100 ट्रिलियन वृक्षारोपण ब्लूप्रिंट और पृथ्वी के पारिस्थितिकी संतुलन की बहाली का महाभियान।</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="section" style="background: #fff; border-radius: 30px;">
+        <h2>डिजिटल रिडेम्पशन (Redeemed Files)</h2>
+        <div class="redeemed-box">
+            <p>30 वर्षों का संकलित डेटा अब सुरक्षित और डिजिटल रूप में उपलब्ध है।</p>
+            <div class="redeemed-list">
+                <div class="redeemed-item">
+                    <strong>Master Infrastructure:</strong> धरती से आसमान तक के संसार का डिज़ाइन।
+                </div>
+                <div class="redeemed-item">
+                    <strong>Toxin-Free Solutions:</strong> आधुनिक रसायन शास्त्र और खाद्य सुरक्षा शोध।
+                </div>
+                <div class="redeemed-item">
+                    <strong>Open Source Dev:</strong> Google Asia Pacific (Hari-Global-Studio-v99).
+                </div>
+            </div>
+            <a href="https://github.com/harigovind91/Hari-Global-Studio-v99" target="_blank" class="btn">GitHub रिपॉजिटरी एक्सेस करें</a>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-logo">HARI-GLOBAL-STUDIO-v99</div>
+        <p>मैं किसी एक क्षेत्र का नहीं, बल्कि मानवता के संपूर्ण विकास का शोधकर्ता हूँ।</p>
+        <p style="margin-top: 20px; opacity: 0.6;">© 2026 | Powered by HAI (Hari AI) | Director (R&D) @ Avikary Cosy Science</p>
+    </footer>
+
+    <script>
+        // स्मूथ स्क्रॉलिंग के लिए सरल स्क्रिप्ट
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
-</html>
+                </html>
+                    
